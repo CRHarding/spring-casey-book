@@ -1,4 +1,4 @@
-package com.example.springbootmonolith.models;
+package com.example.springbootcaseybook.models;
 
 import lombok.*;
 import javax.persistence.*;
