@@ -1,8 +1,21 @@
 create table USERS (
-    ID serial,
+    ID serial PRIMARY KEY,
     USER_NAME varchar(100) NOT NULL,
     FIRST_NAME varchar(100),
     LAST_NAME varchar(100),
     EMAIL varchar(100),
     LOCATION varchar(100)
-)
+);
+
+create table FRIENDS (
+    ID serial PRIMARY KEY,
+    STATUS integer,
+    SENT_REQUEST integer,
+    RECEIVED_REQUEST integer,
+    CONSTRAINT SENT_REQUEST FOREIGN KEY(ID)
+        REFERENCES USERS (ID)
+        ON UPDATE RESTRICT ON DELETE CASCADE,
+    CONSTRAINT RECEIVED_REQUEST FOREIGN KEY(ID)
+        REFERENCES USERS (ID)
+        ON UPDATE RESTRICT ON DELETE CASCADE
+);
