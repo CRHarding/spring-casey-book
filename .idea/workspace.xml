@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5075c2b5-58c1-4eae-b158-f99ee0b5ee70" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/wrapper/dists/gradle-4.5.1-bin/a5vbgfvpwtoqz8v2cdivxz28k/gradle-4.5.1-bin.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,11 +29,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="afterMigrate.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="afterMigrate.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="78">
               <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="497">
+              <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -74,13 +85,13 @@
         <option value="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql" />
         <option value="$PROJECT_DIR$/spring-boot-caseybook/build.gradle" />
         <option value="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="917" />
     <option name="y" value="23" />
-    <option name="width" value="763" />
+    <option name="width" value="646" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
@@ -100,6 +111,27 @@
               <item name="spring-casey-book" type="b2602c69:ProjectViewProjectNode" />
               <item name="spring-casey-book" type="462c0819:PsiDirectoryNode" />
               <item name="spring-boot-caseybook" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring-casey-book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-casey-book" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-caseybook" type="462c0819:PsiDirectoryNode" />
+              <item name=".gradle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring-casey-book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-casey-book" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-caseybook" type="462c0819:PsiDirectoryNode" />
+              <item name=".gradle" type="462c0819:PsiDirectoryNode" />
+              <item name="4.5.1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring-casey-book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-casey-book" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-caseybook" type="462c0819:PsiDirectoryNode" />
+              <item name=".gradle" type="462c0819:PsiDirectoryNode" />
+              <item name="4.5.1" type="462c0819:PsiDirectoryNode" />
+              <item name="fileContent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="spring-casey-book" type="b2602c69:ProjectViewProjectNode" />
@@ -232,7 +264,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="917" y="23" width="763" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="646" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
@@ -256,7 +288,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2767733" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.52491695" />
       <window_info anchor="bottom" id="Problems" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info id="Favorites" side_tool="true" />
@@ -307,6 +339,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
           <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
         </state>
       </provider>
     </entry>
