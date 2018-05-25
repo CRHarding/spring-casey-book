@@ -19,4 +19,10 @@ public class Friend {
 
     @Column(name = "RECEIVED_REQUEST")
     private int receivedRequest;
+
+    @Column(name = "SENT_REQUEST_USER_NAME")
+    private String sentRequestUserName;
+
+    @Column(name = "RECEIVED_REQUEST_USER_NAME")
+    private String receivedRequestUserName;
 }

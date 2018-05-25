@@ -14,28 +14,28 @@ public class UsersController {
     @Autowired
         private UserRepository userRepository;
 
-    @GetMapping("/users")
+    @GetMapping("/api/users")
         public Iterable<User> findAllUsers () {
             return userRepository.findAll ();
         }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/api/users/{userId}")
         public Optional<User> findUserById(@PathVariable Long userId) {
             return userRepository.findById(userId);
         }
 
-    @DeleteMapping("users/{userId}")
+    @DeleteMapping("api/users/{userId}")
         public HttpStatus deleteUserById(@PathVariable Long userId) {
             userRepository.deleteById(userId);
             return HttpStatus.OK;
         }
 
-    @PostMapping("/users")
+    @PostMapping("/api/users")
         public User createNewUser(@RequestBody User newUser) {
             return userRepository.save(newUser);
         }
 
-    @PatchMapping("/users/{userId}")
+    @PatchMapping("/api/users/{userId}")
         public User updateUserById(@PathVariable Long userId, @RequestBody User userRequest) {
             User userFromDb = userRepository.findById(userId).get();
 

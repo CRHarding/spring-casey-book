@@ -14,28 +14,28 @@ public class FriendsController {
     @Autowired
     private FriendRepository friendRepository;
 
-    @GetMapping("/friends")
+    @GetMapping("/api/friends")
     public Iterable<Friend> findAllFriends () {
         return friendRepository.findAll ();
     }
 
-    @GetMapping("/friends/{friendId}")
+    @GetMapping("/api/friends/{friendId}")
     public Optional<Friend> findFriendById(@PathVariable Long friendId) {
         return friendRepository.findById(friendId);
     }
 
-    @DeleteMapping("friends/{friendId}")
+    @DeleteMapping("/api/friends/{friendId}")
     public HttpStatus deleteFriendById(@PathVariable Long friendId) {
         friendRepository.deleteById(friendId);
         return HttpStatus.OK;
     }
 
-    @PostMapping("/friends")
+    @PostMapping("/api/friends")
     public Friend createNewFriend(@RequestBody Friend newFriend) {
         return friendRepository.save(newFriend);
     }
 
-    @PatchMapping("/friends/{friendId}")
+    @PatchMapping("/api/friends/{friendId}")
     public Friend updateFriendById(@PathVariable Long friendId, @RequestBody Friend friendRequest) {
         Friend friendFromDb = friendRepository.findById(friendId).get();
 
