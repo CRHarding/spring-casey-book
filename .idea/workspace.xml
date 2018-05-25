@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5075c2b5-58c1-4eae-b158-f99ee0b5ee70" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/CommentsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/PostsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Post.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/CommentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/PostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/4.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/4.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/modules-2/modules-2.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/modules-2/modules-2.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/transforms-1/transforms-1.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/transforms-1/transforms-1.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-31.out.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-31.out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-32.out.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-32.out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/FriendsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserProfile.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,7 +19,7 @@
       <file leaf-file-name="PostsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/PostsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
+            <state relative-caret-position="754">
               <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -53,7 +31,7 @@
       <file leaf-file-name="V1__Create_users_table.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-283">
+            <state relative-caret-position="416">
               <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
@@ -62,7 +40,7 @@
       <file leaf-file-name="CommentsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/CommentsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
+            <state relative-caret-position="598">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -80,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Comment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="702">
@@ -89,10 +67,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="afterMigrate.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PostRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/PostRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
+            <state relative-caret-position="156">
               <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -155,7 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,8 +260,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -386,7 +373,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Problems" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3154436" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32201535" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,9 +392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,9 +444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -508,9 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -542,9 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -641,13 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -673,9 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="11" column="30" selection-end-line="46" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -688,7 +653,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/PostRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
+        <state relative-caret-position="156">
           <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -698,7 +663,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/PostsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
+        <state relative-caret-position="754">
           <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -708,14 +673,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-283">
+        <state relative-caret-position="416">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/CommentsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
+        <state relative-caret-position="598">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -727,6 +692,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/afterMigrate.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
         </state>
       </provider>
     </entry>
