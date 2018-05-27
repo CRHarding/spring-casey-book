@@ -22,17 +22,35 @@ class AllPosts extends Component {
     });
   }
 
+  manageDelete(postId) {
+    console.log(postId);
+    postServices
+      .deletePost(postId)
+      .then(deletedPost => {
+        console.log('post deleted successfully--->', deletedPost);
+      })
+      .catch(err => {
+        console.log('post delete failed--->', err);
+      });
+  }
+
   renderUserPosts() {
     const posts = this.state.posts;
     return (
-      <Grid item xs>
-          <UserPosts posts={posts} user={this.state.user}/>
-      </Grid>
+      <UserPosts
+        posts={posts}
+        user={this.state.user}
+        manageDelete={this.manageDelete}
+      />
     );
   }
 
   render() {
-    return <div>{this.state.postDataLoaded ? this.renderUserPosts() : ''}</div>;
+    return (
+      <Grid item xs>
+        {this.state.postDataLoaded ? this.renderUserPosts() : ''}
+      </Grid>
+    );
   }
 }
 

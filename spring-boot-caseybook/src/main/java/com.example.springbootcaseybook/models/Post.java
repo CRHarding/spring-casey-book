@@ -12,6 +12,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "TITLE")
+    private String title;
+
     @Column(name = "POSTER_ID")
     private int posterId;
 

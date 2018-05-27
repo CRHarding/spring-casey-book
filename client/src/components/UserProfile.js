@@ -3,10 +3,9 @@ import React from 'react';
 import AllPosts from './Posts/AllPosts';
 import AllFriends from './Friends/AllFriends';
 import Header from './Partials/Header';
-
+import PostForm from './Partials/PostForm';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
 
 const user = {
   userName: 'CRHarding',
@@ -26,11 +25,12 @@ const UserProfile = (props) => {
       <Grid container spacing={24}>
         <Header user={user}/>
       </Grid>
-      <Divider />
-      <Divider />
-      <Grid container spacing={24} justify='space-between'>
+      <Grid container spacing={24} justify='space-between' alignItems='center'>
         <AllFriends user={user}/>
         <AllPosts user={user}/>
+      </Grid>
+      <Grid container spacing={24}>
+        <PostForm user={user}/>
       </Grid>
     </Grid>
   );

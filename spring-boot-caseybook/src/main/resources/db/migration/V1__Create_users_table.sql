@@ -32,6 +32,7 @@ create table FRIENDS (
 
 create table POSTS (
     ID serial PRIMARY KEY,
+    TITLE varchar(50),
     POSTER_ID integer,
     POSTER_USER_NAME varchar(100),
     POST_TEXT varchar(500),

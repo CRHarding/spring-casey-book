@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import UserFriends from './UserFriends';
+import ReceivedFriendRequests from './ReceivedFriendRequests';
+import SentFriendRequests from './SentFriendRequests';
 import friendServices from '../../services/FriendServices';
+import Grid from '@material-ui/core/Grid';
 
 export default class AllFriends extends Component {
   constructor(props) {
@@ -46,11 +48,19 @@ export default class AllFriends extends Component {
       });
   }
 
-  renderUserFriends() {
+  renderSentFriends() {
     return (
-      <UserFriends
-        receivedRequest={this.state.receivedRequest}
+      <SentFriendRequests
         sentRequest={this.state.sentRequest}
+        user={this.state.user}
+      />
+    );
+  }
+
+  renderReceivedFriends() {
+    return (
+      <ReceivedFriendRequests
+        receivedRequest={this.state.receivedRequest}
         user={this.state.user}
       />
     );
@@ -58,7 +68,10 @@ export default class AllFriends extends Component {
 
   render() {
     return (
-      <div>{this.state.receivedDataLoaded && this.state.sentDataLoaded ? this.renderUserFriends() : ''}</div>
+      <Grid item xs>
+        {this.state.sentDataLoaded ? this.renderSentFriends() : ''}
+        {this.state.receivedDataLoaded ? this.renderReceivedFriends() : ''}
+      </Grid>
     );
   }
 }

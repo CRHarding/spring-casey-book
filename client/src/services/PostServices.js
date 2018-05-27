@@ -41,8 +41,7 @@ const PostServices = {
   deletePost(post) {
     return axios({
       method: 'DELETE',
-      url: 'api/posts/delete',
-      data: post,
+      url: `api/posts/${post}`,
     });
   },
 };

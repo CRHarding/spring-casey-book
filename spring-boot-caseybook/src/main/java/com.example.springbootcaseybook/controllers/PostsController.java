@@ -39,6 +39,7 @@ public class PostsController {
     public Post updatePostById(@PathVariable Long postId, @RequestBody Post postRequest) {
         Post postFromDb = postRepository.findById(postId).get();
 
+        postFromDb.setTitleText(postRequest.getPostTitle());
         postFromDb.setPostText(postRequest.getPostText());
         postFromDb.setNumberOfLikes(postRequest.getNumberOfLikes());
         postFromDb.setNumberOfComments(postRequest.getNumberOfComments());

@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 
 const styles = {
   card: {
@@ -20,17 +19,14 @@ const SingleFriend = props => {
   const { classes } = props;
 
   return (
-    <div>
-      <CardContent>
+    <CardContent>
       <Typography className={classes.title} color="textSecondary">
-          Pending friend requests {user.id === friend.sentRequest ? 'to' : 'from' }
-        </Typography>
-        <Typography>
-          {friend.receivedRequestUserName}
-        </Typography>
-      </CardContent>
-      <Divider />
-    </div>
+        Pending friend requests {user.id === friend.sentRequest ? 'to' : 'from' }
+      </Typography>
+      <Typography>
+        {friend.receivedRequestUserName}
+      </Typography>
+    </CardContent>
   );
 };
 

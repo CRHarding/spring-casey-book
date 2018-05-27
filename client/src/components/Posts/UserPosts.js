@@ -1,7 +1,8 @@
 import React from 'react';
 import SinglePost from './SinglePost';
-import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
 
 const styles = theme => ({
   root: {
@@ -14,19 +15,22 @@ const styles = theme => ({
 
 const UserPosts = props => {
   const { classes } = props;
+
   const userPosts = props.posts;
   return (
-    <Card className={classes.card}>
+    <Grid item xs>
       {userPosts.map((post, key) => {
         if (post) {
           return (
-            <SinglePost post={post} key={key} />
+            <Card className={classes.card} key={key}>
+              <SinglePost post={post} key={key} handleDelete={() => props.manageDelete(post.id)}/>
+            </Card>
           );
         } else {
           return null;
         }
       })}
-    </Card>
+    </Grid>
   );
 };
 
