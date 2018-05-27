@@ -14,7 +14,6 @@ class AllPosts extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.user.id);
     postServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
       this.setState({
         posts: responsePosts.data,

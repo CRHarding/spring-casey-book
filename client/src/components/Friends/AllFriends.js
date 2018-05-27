@@ -8,7 +8,8 @@ export default class AllFriends extends Component {
     this.state = {
       receivedRequest: null,
       sentRequest: null,
-      friendDataLoaded: false,
+      receivedDataLoaded: false,
+      sentDataLoaded: false,
       user: this.props.user,
     };
   }
@@ -19,7 +20,7 @@ export default class AllFriends extends Component {
       .then(responseFriends => {
         this.setState({
           receivedRequest: responseFriends.data,
-          friendDataLoaded: true,
+          receivedDataLoaded: true,
         });
       })
       .catch(err => {
@@ -34,7 +35,7 @@ export default class AllFriends extends Component {
       .then(responseFriends => {
         this.setState({
           sentRequest: responseFriends.data,
-          friendDataLoaded: true,
+          sentDataLoaded: true,
         });
       })
       .catch(err => {
@@ -57,7 +58,7 @@ export default class AllFriends extends Component {
 
   render() {
     return (
-      <div>{this.state.friendDataLoaded ? this.renderUserFriends() : ''}</div>
+      <div>{this.state.receivedDataLoaded && this.state.sentDataLoaded ? this.renderUserFriends() : ''}</div>
     );
   }
 }

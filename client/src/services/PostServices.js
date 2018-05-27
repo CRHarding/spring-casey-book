@@ -16,7 +16,6 @@ const PostServices = {
   },
 
   getPostsByUserId(userId) {
-    console.log(userId);
     return axios({
       method: 'GET',
       url: `/api/posts/user/${userId}`,

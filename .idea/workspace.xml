@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5075c2b5-58c1-4eae-b158-f99ee0b5ee70" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Friends/AllFriends.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Friends/AllFriends.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Friends/SingleFriend.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Friends/SingleFriend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Friends/UserFriends.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Friends/UserFriends.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Posts/AllPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Posts/AllPosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Posts/SinglePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Posts/SinglePost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Posts/UserPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Posts/UserPosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/FriendServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/FriendServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/PostServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/PostServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/UserServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/UserServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/4.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/4.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/modules-2/modules-2.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/modules-2/modules-2.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/transforms-1/transforms-1.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/caches/transforms-1/transforms-1.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-31.out.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-31.out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-32.out.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-32.out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-33.out.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/daemon-33.out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin.lock" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/cache/daemon/4.5.1/registry.bin.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/FriendsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/PostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/PostsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/FriendRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/FriendRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/repositories/PostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-caseybook/src/main/resources/db/migration/V1__Create_users_table.sql" afterDir="false" />
-    </list>
+    <list default="true" id="5075c2b5-58c1-4eae-b158-f99ee0b5ee70" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,8 +17,8 @@
       <file leaf-file-name="FriendsController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/FriendsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="55" column="116" selection-start-line="55" selection-start-column="116" selection-end-line="55" selection-end-column="116" />
+            <state relative-caret-position="317">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -312,7 +282,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
@@ -679,8 +648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-boot-caseybook/src/main/java/com.example.springbootcaseybook/controllers/FriendsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="55" column="116" selection-start-line="55" selection-start-column="116" selection-end-line="55" selection-end-column="116" />
+        <state relative-caret-position="317">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>

@@ -61,7 +61,6 @@ class UserFriends extends Component {
   }
 
   renderUserSentRequest() {
-    console.log(this.state.sentRequest);
     if (this.state.sentRequest) {
       return (
         <Card className={this.getCard()}>

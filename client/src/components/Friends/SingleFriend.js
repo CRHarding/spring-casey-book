@@ -18,7 +18,7 @@ const SingleFriend = props => {
   const friend = props.friend;
   const user = props.user;
   const { classes } = props;
-  console.log(friend);
+
   return (
     <div>
       <CardContent>
