@@ -6,7 +6,8 @@ export default class AllFriends extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: null,
+      receivedRequest: null,
+      sentRequest: null,
       friendDataLoaded: false,
       user: this.props.user,
     };
@@ -14,10 +15,25 @@ export default class AllFriends extends Component {
 
   componentDidMount() {
     friendServices
-      .getAllFriends()
+      .getFriendsByReceivedRequest(this.state.user.id)
       .then(responseFriends => {
         this.setState({
-          friends: responseFriends.data,
+          receivedRequest: responseFriends.data,
+          friendDataLoaded: true,
+        });
+      })
+      .catch(err => {
+        console.log(
+          'Error in componenet did mount userprofile friends--->',
+          err,
+        );
+      });
+
+    friendServices
+      .getFriendsBySentRequest(this.state.user.id)
+      .then(responseFriends => {
+        this.setState({
+          sentRequest: responseFriends.data,
           friendDataLoaded: true,
         });
       })
@@ -30,12 +46,18 @@ export default class AllFriends extends Component {
   }
 
   renderUserFriends() {
-    const friends = this.state.friends;
-    console.log(friends);
-    return <UserFriends friends={friends} user={this.state.user}/>;
+    return (
+      <UserFriends
+        receivedRequest={this.state.receivedRequest}
+        sentRequest={this.state.sentRequest}
+        user={this.state.user}
+      />
+    );
   }
 
   render() {
-    return <div>{this.state.friendDataLoaded ? this.renderUserFriends() : ''}</div>;
+    return (
+      <div>{this.state.friendDataLoaded ? this.renderUserFriends() : ''}</div>
+    );
   }
 }

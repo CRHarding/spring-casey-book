@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const UserServices = {
   getAllUsers() {
-    console.log('In get all users');
     return axios({
       method: 'GET',
       url: '/api/users',
@@ -25,7 +24,6 @@ const UserServices = {
   },
 
   editUser(user) {
-    console.log('This is services for editUser', user);
     return axios({
       method: 'PUT',
       url: 'api/users/edit',
@@ -34,7 +32,6 @@ const UserServices = {
   },
 
   deleteUser(user) {
-    console.log('This is services for deleteUser', user);
     return axios({
       method: 'DELETE',
       url: 'api/users/delete',

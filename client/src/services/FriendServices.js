@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const FriendServices = {
   getAllFriends() {
-    console.log('In get all friends');
     return axios({
       method: 'GET',
       url: '/api/friends',
@@ -16,6 +15,27 @@ const FriendServices = {
     });
   },
 
+  getFriendsByStatus(status) {
+    return axios({
+      method: 'GET',
+      url: `/api/friends/status/${status}`,
+    });
+  },
+
+  getFriendsBySentRequest(id) {
+    return axios({
+      method: 'GET',
+      url: `/api/friends/sent/${id}`,
+    });
+  },
+
+  getFriendsByReceivedRequest(id) {
+    return axios({
+      method: 'GET',
+      url: `/api/friends/received/${id}`,
+    });
+  },
+
   addFriend(friend) {
     return axios({
       method: 'POST',
@@ -25,7 +45,6 @@ const FriendServices = {
   },
 
   editFriend(friend) {
-    console.log('This is services for editFriend', friend);
     return axios({
       method: 'PUT',
       url: 'api/friends/edit',
@@ -34,7 +53,6 @@ const FriendServices = {
   },
 
   deleteFriend(friend) {
-    console.log('This is services for deleteFriend', friend);
     return axios({
       method: 'DELETE',
       url: 'api/friends/delete',

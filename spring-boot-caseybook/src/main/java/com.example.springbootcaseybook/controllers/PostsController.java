@@ -46,4 +46,9 @@ public class PostsController {
 
         return postRepository.save(postFromDb);
     }
+
+    @GetMapping("/api/posts/user/{userId}")
+    public Iterable<Post> getByPosterId(@PathVariable int userId) {
+        return postRepository.getByPosterId (userId);
+    }
 }

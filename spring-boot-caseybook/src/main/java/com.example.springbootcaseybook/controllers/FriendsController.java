@@ -45,4 +45,13 @@ public class FriendsController {
 
         return friendRepository.save(friendFromDb);
     }
+
+    @GetMapping("/api/friends/status/{status}")
+    public Iterable<Friend> findByStatus(@PathVariable int status) { return friendRepository.findByStatus(status); }
+
+    @GetMapping("/api/friends/sent/{sentRequest}")
+    public Iterable<Friend> findBySentRequest(@PathVariable int sentRequest) { return friendRepository.findBySentRequest(sentRequest); }
+
+    @GetMapping("/api/friends/received/{receivedRequest}")
+    public Iterable<Friend> findByReceivedRequest(@PathVariable int receivedRequest) { return friendRepository.findByReceivedRequest(receivedRequest); }
 }

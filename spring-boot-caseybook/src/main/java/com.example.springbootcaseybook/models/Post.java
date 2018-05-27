@@ -2,6 +2,7 @@ package com.example.springbootcaseybook.models;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter

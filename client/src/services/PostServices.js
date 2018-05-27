@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const PostServices = {
   getAllPosts() {
-    console.log('In get all posts');
     return axios({
       method: 'GET',
       url: '/api/posts',
@@ -16,6 +15,14 @@ const PostServices = {
     });
   },
 
+  getPostsByUserId(userId) {
+    console.log(userId);
+    return axios({
+      method: 'GET',
+      url: `/api/posts/user/${userId}`,
+    });
+  },
+
   addPost(post) {
     return axios({
       method: 'POST',
@@ -25,7 +32,6 @@ const PostServices = {
   },
 
   editPost(post) {
-    console.log('This is services for editPost', post);
     return axios({
       method: 'PUT',
       url: 'api/posts/edit',
@@ -34,7 +40,6 @@ const PostServices = {
   },
 
   deletePost(post) {
-    console.log('This is services for deletePost', post);
     return axios({
       method: 'DELETE',
       url: 'api/posts/delete',

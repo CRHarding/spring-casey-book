@@ -1,84 +1,90 @@
 import React, { Component } from 'react';
 import SingleFriend from './SingleFriend';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class UserFriends extends Component {
+function getStyles() {
+  const styles = theme => ({
+    card: {
+      minWidth: 275,
+    },
+    title: {
+      marginBottom: 16,
+      fontSize: 14,
+    },
+  });
+  return styles;
+}
+
+class UserFriends extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: this.props.friends,
+      receivedRequest: this.props.receivedRequest,
+      sentRequest: this.props.sentRequest,
       user: this.props.user,
-      userReceivedRequest: null,
-      userSentRequest: null,
     };
 
     this.renderUserSentRequest = this.renderUserSentRequest.bind(this);
     this.renderUserReceivedRequest = this.renderUserReceivedRequest.bind(this);
   }
 
-  componentDidMount() {
-    let userReceivedRequest = this.state.friends.map(friend => {
-      if (friend.sentRequest === this.state.user.id) {
-        return friend;
-      }
-    });
+  getFlex() {
+    return 'flexGrow: 1';
+  }
 
-    userReceivedRequest = userReceivedRequest.filter(friend => {
-      if (friend) {
-        return friend;
-      }
-    });
-
-    this.setState({
-      userReceivedRequest: userReceivedRequest,
-    });
-
-    let userSentRequest = this.state.friends.map(friend => {
-      if (friend.receivedRequest === this.state.user.id) {
-        return friend;
-      }
-    });
-
-    userSentRequest = userSentRequest.filter(friend => {
-      if (friend) {
-        return friend;
-      }
-    });
-    this.setState({
-      userSentRequest: userSentRequest,
-    });
+  getCard() {
+    return 'minWidth: 275';
   }
 
   renderUserReceivedRequest() {
-    console.log(this.state.userReceivedRequest);
-    if (this.state.userReceivedRequest) {
+    if (this.state.receivedRequest) {
       return (
-        <div>
-          {this.state.userReceivedRequest.map((friend, key) => {
-            return <SingleFriend friend={friend} user={this.state.user} key={key} />;
+        <Card className={this.getCard()}>
+          {this.state.receivedRequest.map((friend, key) => {
+            if (friend) {
+              return (
+                <SingleFriend
+                  friend={friend}
+                  user={this.state.user}
+                  key={key}
+                />
+              );
+            } else {
+              return null;
+            }
           })}
-        </div>
+        </Card>
       );
     }
   }
 
   renderUserSentRequest() {
-    if (this.state.userSentRequest) {
+    console.log(this.state.sentRequest);
+    if (this.state.sentRequest) {
       return (
-        <div>
-          {this.state.userSentRequest.map((friend, key) => {
-            return <SingleFriend friend={friend} key={key} />;
+        <Card className={this.getCard()}>
+          {this.state.sentRequest.map((friend, key) => {
+            if (friend) {
+              return <SingleFriend friend={friend} key={key} user={this.state.user}/>;
+            } else {
+              return null;
+            }
           })}
-        </div>
+        </Card>
       );
     }
   }
 
   render() {
     return (
-      <div>
+      <Grid item xs>
         {this.renderUserSentRequest()}
         {this.renderUserReceivedRequest()}
-      </div>
+      </Grid>
     );
   }
 }
+
+export default withStyles(getStyles())(UserFriends);

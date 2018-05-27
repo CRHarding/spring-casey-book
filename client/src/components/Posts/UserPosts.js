@@ -1,28 +1,33 @@
 import React from 'react';
 import SinglePost from './SinglePost';
+import Card from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  card: {
+    minWidth: 275,
+  },
+});
 
 const UserPosts = props => {
-  let posts = props.posts;
-  let user = props.user;
-  let userPosts = posts.map(post => {
-    if (post.posterUserName === user.userName) {
-      return post;
-    }
-  });
-
-  userPosts = userPosts.filter(post => {
-    if (post) {
-      return post;
-    }
-  });
-
+  const { classes } = props;
+  const userPosts = props.posts;
   return (
-    <div>
+    <Card className={classes.card}>
       {userPosts.map((post, key) => {
-        return <SinglePost post={post} key={key} />;
+        if (post) {
+          return (
+            <SinglePost post={post} key={key} />
+          );
+        } else {
+          return null;
+        }
       })}
-    </div>
+    </Card>
   );
 };
 
-export default UserPosts;
+export default withStyles(styles)(UserPosts);
