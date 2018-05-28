@@ -9,12 +9,12 @@ VALUES
     (0, 1, 2, 'CRHarding', 'RBritt'),
     (1, 1, 3, 'CRHarding', 'Doodeitstom');
 
-INSERT INTO POSTS (POSTER_ID, POSTER_USER_NAME, POST_TEXT)
+INSERT INTO POSTS (POSTER_ID, POSTER_USER_NAME, TITLE, POST_TEXT)
 VALUES
-    (1, 'CRHarding', 'This is my first post!'),
-    (2, 'RBritt', 'I love this app!'),
-    (3, 'Doodeitstom', 'Friend me to find out more!'),
-    (1, 'CRHarding', 'This is my second post!');
+    (1, 'CRHarding', 'First Post!', 'This is my first post!'),
+    (2, 'RBritt', 'Best...app..every!', 'I love this app!'),
+    (3, 'Doodeitstom', 'Hello world!', 'Friend me to find out more!'),
+    (1, 'CRHarding', 'I wish I were more interesting...', 'This is my second post!');
 
 INSERT INTO COMMENTS (COMMENTER_ID, POST_ID, COMMENTER_USER_NAME, COMMENT_TEXT)
 VALUES
