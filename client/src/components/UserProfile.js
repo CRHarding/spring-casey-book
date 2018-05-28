@@ -20,10 +20,7 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       showPostForm: false,
-      user: {
-        userName: 'CRHarding',
-        id: 1,
-      },
+      user: this.props.user,
     };
     this.handlePostFormButtonClick = this.handlePostFormButtonClick.bind(this);
   }

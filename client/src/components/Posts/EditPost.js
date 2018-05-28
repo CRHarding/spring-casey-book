@@ -48,10 +48,10 @@ class PostForm extends Component {
     event.preventDefault();
 
     let post = this.state.post;
-    post.title = this.state.title,
-    post.postText = this.state.postText,
-    post.posterId = this.state.user.id,
-    post.posterUserName = this.state.user.userName,
+    post.title = this.state.title;
+    post.postText = this.state.postText;
+    post.posterId = this.state.user.id;
+    post.posterUserName = this.state.user.userName;
 
     PostServices.editPost(post)
       .then(addPost => {

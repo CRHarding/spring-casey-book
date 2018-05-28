@@ -22,6 +22,7 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
+  
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -33,7 +34,7 @@ function ButtonAppBar(props) {
           Casey Book
         </Typography>
         <Typography variant="title" color="inherit" className={classes.flex}>
-          {props.user.userName}
+          {props.user ? props.user.userName : 'Welcome!'}
         </Typography>
         <Button color="inherit">Login</Button>
         </Toolbar>

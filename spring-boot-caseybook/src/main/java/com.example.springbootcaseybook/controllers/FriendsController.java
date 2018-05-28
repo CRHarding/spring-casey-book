@@ -49,9 +49,34 @@ public class FriendsController {
     @GetMapping("/api/friends/status/{status}")
     public Iterable<Friend> findByStatus(@PathVariable int status) { return friendRepository.findByStatus(status); }
 
+    /*
+    //  These two methods query the database for either
+    //  sent friend requests or received friend requests
+    //  to assist in displaying the results on the front
+    //  end. Aka having both 'sentFriendRequests' and
+    //  'receivedFriendRequests' in state to properly update
+    //  the view.
+     */
     @GetMapping("/api/friends/sent/{sentRequest}")
     public Iterable<Friend> findBySentRequest(@PathVariable int sentRequest) { return friendRepository.findBySentRequest(sentRequest); }
 
     @GetMapping("/api/friends/received/{receivedRequest}")
     public Iterable<Friend> findByReceivedRequest(@PathVariable int receivedRequest) { return friendRepository.findByReceivedRequest(receivedRequest); }
+
+    /*
+    //  Finds current friends for the user. The user either
+    //  requested the friendship or received the request, hence
+    //  querying for sentrequest or received request. Current
+    //  friends are defined as having a status of 1, so I set
+    //  that here to grab only current friends, and not pending
+    //  friends. You shouldn't be able to see the posts of
+    //  pending friends, eh?
+     */
+    @GetMapping("/api/friends/current/{userId}")
+    public Iterable<Friend> findByStatusAndSentRequestOrReceivedRequest(@PathVariable int userId) {
+        int status = 1;
+        int sentRequest = userId;
+        int receivedRequest = userId;
+        return friendRepository.findByStatusAndSentRequestOrReceivedRequest(sentRequest, receivedRequest, status);
+    }
 }

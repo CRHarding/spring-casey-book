@@ -2,19 +2,27 @@ INSERT INTO USERS (USER_NAME, FIRST_NAME, LAST_NAME, EMAIL, LOCATION)
 VALUES
     ('CRHarding', 'Casey', 'Harding', 'casey.r.harding@gmail.com', 'New York, New York'),
     ('RBritt', 'Ryan', 'Brit', 'r.britt@gmail.com', 'New York, New York'),
-    ('Doodeitstom', 'Tom', 'Choe', 't.choe@gmail.com', 'New York, New York');
+    ('Doodeitstom', 'Tom', 'Choe', 't.choe@gmail.com', 'New York, New York'),
+    ('SSontag', 'Susan', 'Sontag', 's.sontag@gmail.com', 'New York, New York'),
+    ('SBeauvoir', 'Simone', 'De Beauvoir', 's.beauvoir@gmail.com', 'New York, New York');
 
 INSERT INTO FRIENDS (STATUS, SENT_REQUEST, RECEIVED_REQUEST, SENT_REQUEST_USER_NAME, RECEIVED_REQUEST_USER_NAME)
 VALUES
-    (0, 1, 2, 'CRHarding', 'RBritt'),
-    (1, 1, 3, 'CRHarding', 'Doodeitstom');
+    (2, 1, 2, 'CRHarding', 'RBritt'),
+    (2, 1, 3, 'CRHarding', 'Doodeitstom'),
+    (1, 2, 3, 'RBritt', 'Doodeitstom'),
+    (1, 1, 4, 'CRHarding', 'SSontag'),
+    (3, 2, 4, 'RBritt', 'SSontag'),
+    (1, 5, 1, 'SBeauvoir', 'CRHarding');
 
 INSERT INTO POSTS (POSTER_ID, POSTER_USER_NAME, TITLE, POST_TEXT)
 VALUES
     (1, 'CRHarding', 'First Post!', 'This is my first post!'),
     (2, 'RBritt', 'Best...app..every!', 'I love this app!'),
     (3, 'Doodeitstom', 'Hello world!', 'Friend me to find out more!'),
-    (1, 'CRHarding', 'I wish I were more interesting...', 'This is my second post!');
+    (1, 'CRHarding', 'I wish I were more interesting...', 'This is my second post!'),
+    (5, 'SBeauvoir', 'I really like this app!', 'One of the better social media apps that Ive encountered'),
+    (4, 'SSontag', 'Ive seen better...', 'Seriously. What does everyone see in this app? Its a buncha fluff...');
 
 INSERT INTO COMMENTS (COMMENTER_ID, POST_ID, COMMENTER_USER_NAME, COMMENT_TEXT)
 VALUES

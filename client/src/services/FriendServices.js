@@ -36,6 +36,13 @@ const FriendServices = {
     });
   },
 
+  getCurrentUserFriendsById(id) {
+    return axios({
+      method: 'GET',
+      url: `/api/friends/current/${id}`,
+    });
+  },
+
   addFriend(friend) {
     return axios({
       method: 'POST',

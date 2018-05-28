@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 import PostServices from '../../services/PostServices';
 
-class AllPosts extends Component {
+export default class AllPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +15,6 @@ class AllPosts extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.user);
     PostServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
       this.setState({
         posts: responsePosts.data,
@@ -43,5 +42,3 @@ class AllPosts extends Component {
     );
   }
 }
-
-export default AllPosts;

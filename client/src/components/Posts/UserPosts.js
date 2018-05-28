@@ -13,7 +13,6 @@ const styles = theme => ({
 });
 
 const UserPosts = props => {
-  const { classes } = props;
   const user = props.user;
   const userPosts = props.posts;
   return (

@@ -8,4 +8,5 @@ public interface FriendRepository extends CrudRepository<Friend, Long> {
     public List<Friend> findByStatus(int status);
     public List<Friend> findBySentRequest(int sentRequest);
     public List<Friend> findByReceivedRequest(int receivedRequest);
+    public List<Friend> findByStatusAndSentRequestOrReceivedRequest(int sentRequest, int receivedRequest, int status);
 }
