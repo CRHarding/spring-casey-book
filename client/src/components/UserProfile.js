@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import AllPosts from './Posts/AllPosts';
 import AllFriends from './Friends/AllFriends';
 import Header from './Partials/Header';
-import PostForm from './Partials/PostForm';
+import AddPost from './Posts/AddPost';
+
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -36,11 +37,16 @@ class UserProfile extends Component {
   render() {
     const { classes } = this.props;
     const user = this.state.user;
+    console.log(user);
+    const post = {
+      title: 'Enter your post Title',
+      postText: 'Enter your post content',
+    };
 
     return (
       <Grid className={classes.root}>
         <Grid container spacing={24}>
-          <Header user={user} />
+          <Header user={this.state.user} />
         </Grid>
         <Grid
           container
@@ -58,10 +64,17 @@ class UserProfile extends Component {
           className={classes.button}
           onClick={this.handlePostFormButtonClick}
         >
-          { this.state.showPostForm ? 'Cancel' : 'Post' }
+          {this.state.showPostForm ? 'Cancel' : 'Post'}
         </Button>
         <Grid container spacing={24}>
-          {this.state.showPostForm ? <PostForm user={user} /> : ''}
+          {this.state.showPostForm ? (
+            <AddPost
+              user={this.state.user}
+              post={post}
+            />
+          ) : (
+            ''
+          )}
         </Grid>
       </Grid>
     );

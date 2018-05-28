@@ -31,9 +31,10 @@ const PostServices = {
   },
 
   editPost(post) {
+    console.log(post);
     return axios({
-      method: 'PUT',
-      url: 'api/posts/edit',
+      method: 'PATCH',
+      url: `api/posts/${post.id}`,
       data: post,
     });
   },

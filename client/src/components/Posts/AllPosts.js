@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import UserPosts from './UserPosts';
-import postServices from '../../services/PostServices';
 import Grid from '@material-ui/core/Grid';
+
+import PostServices from '../../services/PostServices';
 
 class AllPosts extends Component {
   constructor(props) {
@@ -14,24 +15,13 @@ class AllPosts extends Component {
   }
 
   componentDidMount() {
-    postServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
+    console.log(this.state.user);
+    PostServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
       this.setState({
         posts: responsePosts.data,
         postDataLoaded: true,
       });
     });
-  }
-
-  manageDelete(postId) {
-    console.log(postId);
-    postServices
-      .deletePost(postId)
-      .then(deletedPost => {
-        console.log('post deleted successfully--->', deletedPost);
-      })
-      .catch(err => {
-        console.log('post delete failed--->', err);
-      });
   }
 
   renderUserPosts() {

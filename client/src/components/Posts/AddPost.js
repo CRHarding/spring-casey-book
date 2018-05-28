@@ -69,9 +69,7 @@ class PostForm extends Component {
       <Grid item xs>
         <form
           className={classes.container}
-          onSubmit={() =>
-            this.handleSubmit()
-          }
+          onSubmit={this.handleSubmit}
         >
           <div className={classes.container}>
             <FormControl className={classes.formControl}>

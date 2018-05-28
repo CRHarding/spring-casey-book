@@ -15,7 +15,7 @@ const styles = theme => ({
 
 const UserPosts = props => {
   const { classes } = props;
-
+  const user = props.user;
   const userPosts = props.posts;
   return (
     <Grid item xs>
@@ -23,7 +23,7 @@ const UserPosts = props => {
         if (post) {
           return (
             <Card className={classes.card} key={key}>
-              <SinglePost post={post} key={key} handleDelete={() => props.manageDelete(post.id)}/>
+              <SinglePost post={post} key={key} user={user} />
             </Card>
           );
         } else {

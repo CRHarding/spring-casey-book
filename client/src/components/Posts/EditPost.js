@@ -34,6 +34,7 @@ class PostForm extends Component {
       title: this.props.post.title,
       postText: this.props.post.postText,
       user: this.props.user,
+      post: this.props.post,
     };
   }
 
@@ -45,15 +46,14 @@ class PostForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const post = {
-      title: this.state.title,
-      postText: this.state.postText,
-      posterId: this.state.user.id,
-      posterUserName: this.state.user.userName,
-    };
-    console.log(this.props);
 
-    PostServices.addPost(post)
+    let post = this.state.post;
+    post.title = this.state.title,
+    post.postText = this.state.postText,
+    post.posterId = this.state.user.id,
+    post.posterUserName = this.state.user.userName,
+
+    PostServices.editPost(post)
       .then(addPost => {
         console.log('Adding post worked!--->', addPost);
       })
@@ -69,9 +69,7 @@ class PostForm extends Component {
       <Grid item xs>
         <form
           className={classes.container}
-          onSubmit={() =>
-            this.handleSubmit()
-          }
+          onSubmit={this.handleSubmit}
         >
           <div className={classes.container}>
             <FormControl className={classes.formControl}>
@@ -100,7 +98,7 @@ class PostForm extends Component {
             color="primary"
             className={classes.button}
           >
-            Add Post
+            Edit Post
           </Button>
         </form>
       </Grid>
