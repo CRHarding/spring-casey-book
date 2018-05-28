@@ -41,13 +41,11 @@ class ReceivedFriendRequests extends Component {
           {this.state.receivedRequest.map((friend, key) => {
             if (friend) {
               return (
-                <Card className={this.getCard()} key={key}>
                   <SingleFriend
                     friend={friend}
                     user={this.state.user}
                     key={key}
                   />
-                </Card>
               );
             } else {
               return null;

@@ -27,9 +27,7 @@ class SentFriendRequests extends Component {
         {this.state.sentRequest.map((friend, key) => {
           if (friend) {
             return (
-              <Card className={classes.card} key={key}>
                 <SingleFriend friend={friend} key={key} user={this.state.user} />
-              </Card>
               );
           } else {
             return null;

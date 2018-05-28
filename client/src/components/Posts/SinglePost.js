@@ -4,7 +4,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
 
 import PostServices from '../../services/PostServices';
 import EditPost from './EditPost';
@@ -20,6 +22,11 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
+  root: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
 });
 
 class SinglePost extends Component {
@@ -55,7 +62,7 @@ class SinglePost extends Component {
     let post = this.state.post;
 
     return (
-      <CardContent>
+      <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
           {post.posterUserName}'s post:{' '}
         </Typography>
@@ -77,7 +84,7 @@ class SinglePost extends Component {
           aria-label="edit"
           onClick={this.showEditForm}
         >
-          <DeleteIcon />
+          <EditIcon />
         </IconButton>
         {this.state.showEditForm ? (
           <EditPost
@@ -87,7 +94,7 @@ class SinglePost extends Component {
         ) : (
           ''
         )}
-      </CardContent>
+      </Paper>
     );
   }
 }
