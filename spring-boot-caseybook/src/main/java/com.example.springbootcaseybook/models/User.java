@@ -27,4 +27,7 @@ public class User {
 
     @Column(name = "LOCATION")
     private String location;
+
+    @Column(name = "ABOUT_ME")
+    private String aboutMe;
 }

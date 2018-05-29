@@ -9,8 +9,10 @@
 5.)React
 6.)Redux
 
-###Still To Do
-1.)User Auth
-2.)Home Page
-3.)Displaying of posts in order by friend status / then by timestamp
-4.)Clicking friend name links to friend profile page
+###Still To Do (in order of importance...)
+1.)Displaying of posts on home page in order by friend status / then by timestamp
+2.)Bring in Redux or context to manage state
+3.)Handle clicking of usernames linking to profile pages from friend request paper
+4.)User Auth
+5.)Migrate to a graph based database system
+6.)

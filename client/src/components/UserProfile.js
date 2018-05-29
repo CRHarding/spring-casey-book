@@ -9,11 +9,18 @@ import UserServices from '../services/UserServices';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
   },
+  paper: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
 });
 
 class UserProfile extends Component {
@@ -50,8 +57,6 @@ class UserProfile extends Component {
   render() {
     const { classes } = this.props;
     const user = this.state.user;
-    console.log(user);
-    console.log(this.state.userDataLoaded);
     const post = {
       title: 'Enter your post Title',
       postText: 'Enter your post content',
@@ -60,40 +65,45 @@ class UserProfile extends Component {
     return (
       <Grid className={classes.root}>
         {this.state.userDataLoaded ? (
-        <Grid>
-          <Grid container spacing={24}>
-            <Header user={this.state.user} />
+          <Grid>
+            <Grid container spacing={24}>
+              <Header user={this.state.user} />
+            </Grid>
+            <Paper className={classes.paper} elevation={4}>
+              <Typography className={classes.title} color="textSecondary">
+                Full Name: {user.firstName} {user.lastName}
+              </Typography>
+              <Typography>About Me: {user.aboutMe}</Typography>
+            </Paper>
+            <Grid
+              container
+              spacing={24}
+              justify="space-between"
+              alignItems="center"
+            >
+              <AllFriends user={user} />
+              <AllPosts user={user} />
+            </Grid>
+            <Button
+              type="submit"
+              variant="raised"
+              color="primary"
+              className={classes.button}
+              onClick={this.handlePostFormButtonClick}
+            >
+              {this.state.showPostForm ? 'Cancel' : 'Post'}
+            </Button>
+            <Grid container spacing={24}>
+              {this.state.showPostForm ? (
+                <AddPost user={this.state.user} post={post} />
+              ) : (
+                ''
+              )}
+            </Grid>
           </Grid>
-          <Grid
-            container
-            spacing={24}
-            justify="space-between"
-            alignItems="center"
-          >
-            <AllFriends user={user} />
-            <AllPosts user={user} />
-          </Grid>
-          <Button
-            type="submit"
-            variant="raised"
-            color="primary"
-            className={classes.button}
-            onClick={this.handlePostFormButtonClick}
-          >
-            {this.state.showPostForm ? 'Cancel' : 'Post'}
-          </Button>
-          <Grid container spacing={24}>
-            {this.state.showPostForm ? (
-              <AddPost
-                user={this.state.user}
-                post={post}
-              />
-            ) : (
-              ''
-            )}
-          </Grid>
-        </Grid>
-      ) : '' }
+        ) : (
+          ''
+        )}
       </Grid>
     );
   }
