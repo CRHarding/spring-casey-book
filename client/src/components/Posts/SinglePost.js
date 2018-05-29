@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -63,7 +65,7 @@ class SinglePost extends Component {
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
-          {post.posterUserName}'s post:{' '}
+          <Link to={`/users/${this.state.user.id}`}>{post.posterUserName}'s post:{' '}</Link>
         </Typography>
         <Typography variant="headline" component="h2">
           {post.title}

@@ -32,7 +32,7 @@ class UserProfile extends Component {
     UserServices.getOneUser(this.state.id)
       .then(user => {
         this.setState({
-          user: user,
+          user: user.data,
           userDataLoaded: true,
         });
       })
@@ -51,6 +51,7 @@ class UserProfile extends Component {
     const { classes } = this.props;
     const user = this.state.user;
     console.log(user);
+    console.log(this.state.userDataLoaded);
     const post = {
       title: 'Enter your post Title',
       postText: 'Enter your post content',
