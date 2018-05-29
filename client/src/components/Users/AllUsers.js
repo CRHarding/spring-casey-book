@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SingleUser from './SingleUser';
-import userServices from '../../services/UserServices';
+import UserServices from '../../services/UserServices';
 
 export default class AllUsers extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class AllUsers extends Component {
   }
 
   componentDidMount() {
-    userServices
+    UserServices
       .getAllUsers()
       .then(responseUsers => {
         this.setState({

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -24,54 +26,20 @@ class Home extends Component {
     super(props);
     this.state = {
       friends: [],
+      friendsData: [],
       friendPosts: null,
       user: user,
       friendDataLoaded: false,
+      allFriendDataLoaded: false,
     };
   }
 
   componentDidMount() {
-    let currentFriends = [];
     FriendServices.getCurrentUserFriendsById(this.state.user.id)
       .then(returnFriends => {
-        returnFriends.data.map(friends => {
-          if (friends) {
-            if (friends.sentRequest === user.id) {
-              UserServices.getOneUser(friends.receivedRequest)
-                .then(friend => {
-                  currentFriends = this.state.friends;
-                  currentFriends.push(friend.data);
-                  this.setState({
-                    friends: currentFriends,
-                    friendDataLoaded: true,
-                  });
-                })
-                .catch(err => {
-                  console.log(
-                    'error in innerloop getcurrentfriendsbyid--->',
-                    err,
-                  );
-                });
-            } else {
-              UserServices.getOneUser(friends.sentRequest)
-                .then(friend => {
-                  currentFriends = this.state.friends;
-                  currentFriends.push(friend.data);
-                  this.setState({
-                    friends: currentFriends,
-                    friendDataLoaded: true,
-                  });
-                })
-                .catch(err => {
-                  console.log(
-                    'error in innerloop getcurrentfriendsbyid--->',
-                    err,
-                  );
-                });
-            }
-          } else {
-            return null;
-          }
+        this.setState({
+          friends: returnFriends.data,
+          friendDataLoaded: true,
         });
       })
       .catch(err => {
@@ -79,29 +47,61 @@ class Home extends Component {
       });
   }
 
-  renderFriendPosts() {
-    this.state.friends.map((friend, key) => {
-      if (friend) {
-        console.log(friend);
-        return <AllPosts user={friend} key={key} />;
+  getListOfFriends() {
+    let currentFriends = [];
+    const friendList = this.state.friends;
+    for (let i = 0; i < friendList.length; i++) {
+      if (friendList[i].sentRequest === user.id) {
+        UserServices.getOneUser(friendList[i].receivedRequest)
+          .then(friend => {
+            currentFriends.push(friend.data);
+            this.setState({
+              friendsData: currentFriends,
+              allFriendDataLoaded: true,
+              friendDataLoaded: false,
+            });
+          })
+          .catch(err => {
+            console.log('error in innerloop getcurrentfriendsbyid--->', err);
+          });
       } else {
-        return null;
+        UserServices.getOneUser(friendList[i].sentRequest)
+          .then(friend => {
+            currentFriends.push(friend.data);
+            this.setState({
+              friendsData: currentFriends,
+              allFriendDataLoaded: true,
+              friendDataLoaded: false,
+            });
+          })
+          .catch(err => {
+            console.log('error in innerloop getcurrentfriendsbyid--->', err);
+          });
       }
-    });
+    }
   }
 
   render() {
     //Hard coded user to be replaced by user auth down the road...
-
     const { classes } = this.props;
-    console.log(this.state.friendDataLoaded);
+
     return (
       <Grid className={classes.root}>
-        <Grid container spacing={24}>
+        <Grid
+          container
+          spacing={24}
+          justify="space-between"
+          alignItems="center"
+        >
           <Header user={user} />
         </Grid>
         <Grid container spacing={24}>
-          {this.state.friendDataLoaded ? this.renderFriendPosts() : ''}
+          {this.state.friendDataLoaded ? this.getListOfFriends() : ''}
+          {this.state.allFriendDataLoaded
+            ? this.state.friendsData.map((friend, key) => {
+                return <AllPosts user={friend} key={key} />;
+              })
+            : ''}
         </Grid>
       </Grid>
     );

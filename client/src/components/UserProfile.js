@@ -4,6 +4,7 @@ import AllPosts from './Posts/AllPosts';
 import AllFriends from './Friends/AllFriends';
 import Header from './Partials/Header';
 import AddPost from './Posts/AddPost';
+import UserServices from '../services/UserServices';
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
@@ -20,9 +21,24 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       showPostForm: false,
-      user: this.props.user,
+      id: this.props.match.params.id,
+      user: null,
+      userDataLoaded: false,
     };
     this.handlePostFormButtonClick = this.handlePostFormButtonClick.bind(this);
+  }
+
+  componentDidMount() {
+    UserServices.getOneUser(this.state.id)
+      .then(user => {
+        this.setState({
+          user: user,
+          userDataLoaded: true,
+        });
+      })
+      .catch(err => {
+        console.log('error in innerloop getcurrentfriendsbyid--->', err);
+      });
   }
 
   handlePostFormButtonClick() {
@@ -42,37 +58,41 @@ class UserProfile extends Component {
 
     return (
       <Grid className={classes.root}>
-        <Grid container spacing={24}>
-          <Header user={this.state.user} />
+        {this.state.userDataLoaded ? (
+        <Grid>
+          <Grid container spacing={24}>
+            <Header user={this.state.user} />
+          </Grid>
+          <Grid
+            container
+            spacing={24}
+            justify="space-between"
+            alignItems="center"
+          >
+            <AllFriends user={user} />
+            <AllPosts user={user} />
+          </Grid>
+          <Button
+            type="submit"
+            variant="raised"
+            color="primary"
+            className={classes.button}
+            onClick={this.handlePostFormButtonClick}
+          >
+            {this.state.showPostForm ? 'Cancel' : 'Post'}
+          </Button>
+          <Grid container spacing={24}>
+            {this.state.showPostForm ? (
+              <AddPost
+                user={this.state.user}
+                post={post}
+              />
+            ) : (
+              ''
+            )}
+          </Grid>
         </Grid>
-        <Grid
-          container
-          spacing={24}
-          justify="space-between"
-          alignItems="center"
-        >
-          <AllFriends user={user} />
-          <AllPosts user={user} />
-        </Grid>
-        <Button
-          type="submit"
-          variant="raised"
-          color="primary"
-          className={classes.button}
-          onClick={this.handlePostFormButtonClick}
-        >
-          {this.state.showPostForm ? 'Cancel' : 'Post'}
-        </Button>
-        <Grid container spacing={24}>
-          {this.state.showPostForm ? (
-            <AddPost
-              user={this.state.user}
-              post={post}
-            />
-          ) : (
-            ''
-          )}
-        </Grid>
+      ) : '' }
       </Grid>
     );
   }

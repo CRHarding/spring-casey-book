@@ -77,6 +77,6 @@ public class FriendsController {
         int status = 1;
         int sentRequest = userId;
         int receivedRequest = userId;
-        return friendRepository.findByStatusAndSentRequestOrReceivedRequest(sentRequest, receivedRequest, status);
+        return friendRepository.findByStatusAndSentRequestOrReceivedRequest (sentRequest, receivedRequest, status);
     }
 }
