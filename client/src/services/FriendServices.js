@@ -8,6 +8,13 @@ const FriendServices = {
     });
   },
 
+  getFriendsById(id) {
+    return axios({
+      method: 'GET',
+      url: `/api/friends/user/${id}`,
+    });
+  },
+
   getOneFriend(friendId) {
     return axios({
       method: 'GET',
@@ -15,10 +22,10 @@ const FriendServices = {
     });
   },
 
-  getFriendsByStatus(status) {
+  getFriendsByStatus(status, id) {
     return axios({
       method: 'GET',
-      url: `/api/friends/status/${status}`,
+      url: `/api/friends/current/${id}/${status}`,
     });
   },
 
@@ -53,8 +60,8 @@ const FriendServices = {
 
   editFriend(friend) {
     return axios({
-      method: 'PUT',
-      url: 'api/friends/edit',
+      method: 'PATCH',
+      url: `/api/friends/${friend.id}`,
       data: friend,
     });
   },
@@ -62,7 +69,7 @@ const FriendServices = {
   deleteFriend(friend) {
     return axios({
       method: 'DELETE',
-      url: 'api/friends/delete',
+      url: '/api/friends/delete',
       data: friend,
     });
   },

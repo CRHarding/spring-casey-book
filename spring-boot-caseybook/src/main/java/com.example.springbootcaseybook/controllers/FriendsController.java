@@ -72,9 +72,8 @@ public class FriendsController {
     //  friends. You shouldn't be able to see the posts of
     //  pending friends, eh?
      */
-    @GetMapping("/api/friends/current/{userId}")
-    public Iterable<Friend> findByStatusAndSentRequestOrReceivedRequest(@PathVariable int userId) {
-        int status = 1;
+    @GetMapping("/api/friends/current/{userId}/{status}")
+    public Iterable<Friend> findByStatusAndSentRequestOrReceivedRequest(@PathVariable int userId, @PathVariable int status) {
         int sentRequest = userId;
         int receivedRequest = userId;
         return friendRepository.findByStatusAndSentRequestOrReceivedRequest (sentRequest, receivedRequest, status);

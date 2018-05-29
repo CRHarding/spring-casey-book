@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,7 +24,7 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
-  
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -31,7 +33,7 @@ function ButtonAppBar(props) {
           <MenuIcon />
         </IconButton>
         <Typography variant="title" color="inherit" className={classes.flex}>
-          Casey Book
+          <Link to="/" style={{ textDecoration: 'none' }}>Casey Book</Link>
         </Typography>
         <Typography variant="title" color="inherit" className={classes.flex}>
           {props.user ? props.user.userName : 'Welcome!'}
