@@ -36,28 +36,6 @@ class SingleFriend extends Component {
     };
   }
 
-  handleFriendRequest(choice) {
-    let changeFriend = this.state.friend;
-    if (choice) {
-      console.log('accept');
-      changeFriend.status = 2;
-    } else {
-      console.log('reject');
-      changeFriend.status = 3;
-    }
-
-    FriendServices.editFriend(changeFriend)
-      .then(responseFriend => {
-        console.log('friend updated--->', responseFriend.data);
-        this.setState({
-          friend: responseFriend.data,
-        });
-      })
-      .catch(err => {
-        console.log('error in updating friend---', err);
-      });
-  }
-
   render() {
     const friend = this.state.friend;
     const user = this.state.user;
@@ -99,14 +77,14 @@ class SingleFriend extends Component {
             <Button
               variant="raised"
               size="small"
-              onClick={() => this.handleFriendRequest(true)}
+              onClick={() => this.props.handleFriendRequest(this, true, friend)}
             >
               Accept
             </Button>
             <Button
               variant="raised"
               size="small"
-              onClick={() => this.handleFriendRequest(false)}
+              onClick={() => this.props.handleFriendRequest(this, false, friend)}
             >
               Reject
             </Button>

@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 import Header from './Partials/Header';
-
-import FriendServices from '../services/FriendServices';
-import UserServices from '../services/UserServices';
 import AllPosts from './Posts/AllPosts';
+import AllFriends from './Friends/AllFriends';
+
+import UserServices from '../services/UserServices';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
+  card: {
+    minWidth: 275,
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14,
+  },
+  root: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
+  button: {
+    margin: theme.spacing.unit,
   },
 });
 
@@ -24,60 +38,31 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: [],
-      friendsData: [],
-      friendPosts: null,
       user: user,
-      friendDataLoaded: false,
-      allFriendDataLoaded: false,
+      users: null,
+      usersDataLoaded: false,
+      usersChoice: false,
     };
   }
 
   componentDidMount() {
-    FriendServices.getCurrentUserFriendsById(this.state.user.id)
-      .then(returnFriends => {
+    UserServices.getAllUsers()
+      .then(users => {
         this.setState({
-          friends: returnFriends.data,
-          friendDataLoaded: true,
+          users: users.data,
+          usersDataLoaded: true,
         });
       })
       .catch(err => {
-        console.log('error in home--->', err);
+        console.log(err);
       });
   }
 
-  getListOfFriends() {
-    let currentFriends = [];
-    const friendList = this.state.friends;
-    for (let i = 0; i < friendList.length; i++) {
-      if (friendList[i].sentRequest === user.id) {
-        UserServices.getOneUser(friendList[i].receivedRequest)
-          .then(friend => {
-            currentFriends.push(friend.data);
-            this.setState({
-              friendsData: currentFriends,
-              allFriendDataLoaded: true,
-              friendDataLoaded: false,
-            });
-          })
-          .catch(err => {
-            console.log('error in innerloop getcurrentfriendsbyid--->', err);
-          });
-      } else {
-        UserServices.getOneUser(friendList[i].sentRequest)
-          .then(friend => {
-            currentFriends.push(friend.data);
-            this.setState({
-              friendsData: currentFriends,
-              allFriendDataLoaded: true,
-              friendDataLoaded: false,
-            });
-          })
-          .catch(err => {
-            console.log('error in innerloop getcurrentfriendsbyid--->', err);
-          });
-      }
-    }
+  handleUserChoiceClick(user) {
+    this.setState({
+      user: user,
+      usersChoice: !this.state.usersChoice,
+    });
   }
 
   render() {
@@ -92,13 +77,28 @@ class Home extends Component {
           justify="space-between"
           alignItems="center"
         >
-          <Header user={user} />
+          <Header user={this.state.user} />
         </Grid>
         <Grid container spacing={24}>
-          {this.state.friendDataLoaded ? this.getListOfFriends() : ''}
-          {this.state.allFriendDataLoaded
-            ? this.state.friendsData.map((friend, key) => {
-                return <AllPosts user={friend} key={key} />;
+          {this.state.usersChoice ? <AllFriends user={this.state.user} /> : '' }
+          {this.state.usersChoice ? <AllPosts user={this.state.user} /> : '' }
+        </Grid>
+        <Grid container spacing={24}>
+          {this.state.usersDataLoaded
+            ? this.state.users.map((user, key) => {
+                return (
+                  <Paper
+                    className={classes.root}
+                    elevation={4}
+                    onClick={() => this.handleUserChoiceClick(user)}
+                    key={key}
+                  >
+                    <Typography variant="headline" component="h3">
+                      {user.userName}
+                    </Typography>
+                    <Typography component="p">{user.id}</Typography>
+                  </Paper>
+                );
               })
             : ''}
         </Grid>
