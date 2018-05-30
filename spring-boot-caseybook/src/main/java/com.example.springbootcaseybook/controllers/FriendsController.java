@@ -76,8 +76,6 @@ public class FriendsController {
     public Iterable<Friend> findByStatusAndSentRequestOrStatusTwoAndReceivedRequest(@PathVariable(value="userId") int userId, @PathVariable(value="status") int status) {
         int sentRequest = userId;
         int receivedRequest = userId;
-        System.out.println ("status: " + status);
-        System.out.println ("userid: " + sentRequest);
         return friendRepository.findByStatusAndSentRequestOrStatusAndReceivedRequest (status, sentRequest, status, receivedRequest);
     }
 }

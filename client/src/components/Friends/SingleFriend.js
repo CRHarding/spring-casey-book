@@ -47,12 +47,24 @@ class SingleFriend extends Component {
           Pending friend requests {didSend ? 'from' : 'to'}
         </Typography>
           {!didSend ? (
-          <Link
-            to={`/users/${friend.receivedRequest}`}
-            style={{ textDecoration: 'none' }}
-          >
-            {friend.receivedRequestUserName}
-          </Link>
+          <div>
+            <Link
+              to={`/users/${friend.receivedRequest}`}
+              style={{ textDecoration: 'none' }}
+            >
+              {friend.receivedRequestUserName}
+            </Link>
+            <Typography className={classes.title} color="textSecondary">
+              from:
+            </Typography>
+            <Link
+              to={`/users/${friend.sentRequest}`}
+              style={{ textDecoration: 'none' }}
+            >
+              {friend.sentRequestUserName}
+            </Link>
+            <br/>
+          </div>
         ) : (
           <div>
             <Link
@@ -77,14 +89,14 @@ class SingleFriend extends Component {
             <Button
               variant="raised"
               size="small"
-              onClick={() => this.props.handleFriendRequest(this, true, friend)}
+              onClick={() => this.props.handleFriendAccept(friend)}
             >
               Accept
             </Button>
             <Button
               variant="raised"
               size="small"
-              onClick={() => this.props.handleFriendRequest(this, false, friend)}
+              onClick={() => this.props.handleFriendReject(friend)}
             >
               Reject
             </Button>

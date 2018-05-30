@@ -19,57 +19,77 @@ export default class AllFriends extends Component {
   }
 
   componentDidMount() {
-    FriendServices.getFriendsByStatus(1, 1).then(responsePendingFriends => {
-      this.setState({
-        pendingFriends: responsePendingFriends.data,
-        pendingFriendsDataLoaded: true,
-      });
-    });
+    FriendServices.getFriendsByStatus(1, this.state.user.id).then(
+      responsePendingFriends => {
+        this.setState({
+          pendingFriends: responsePendingFriends.data,
+          pendingFriendsDataLoaded: true,
+        });
+      },
+    );
 
-    FriendServices.getFriendsByStatus(2, 1).then(responseCurrentFriends => {
-      this.setState({
-        currentFriends: responseCurrentFriends.data,
-        currentFriendsDataLoaded: true,
-      });
-    });
+    FriendServices.getFriendsByStatus(2, this.state.user.id).then(
+      responseCurrentFriends => {
+        this.setState({
+          currentFriends: responseCurrentFriends.data,
+          currentFriendsDataLoaded: true,
+        });
+      },
+    );
   }
 
-  handleFriendRequest() {
-    console.log(this);
-    let changeFriend = this.state.friend;
-    if (this.choice) {
-      console.log('accept');
-      changeFriend.status = 2;
-    } else {
-      console.log('reject');
-      changeFriend.status = 3;
-    }
+  handleFriendAccept(friend) {
+    let changeFriend = friend;
+    console.log('accept');
+    changeFriend.status = 2;
 
     FriendServices.editFriend(changeFriend)
       .then(responseFriend => {
         console.log('friend updated--->', responseFriend.data);
+        let pendingFriends = this.state.pendingFriends;
+        let currentFriends = this.state.currentFriends;
+
+        pendingFriends = pendingFriends.filter(removeFriend => {
+          if (friend !== removeFriend) {
+            return removeFriend;
+          }
+        });
+
+        currentFriends.push(friend);
+
         this.setState({
-          friend: responseFriend.data,
+          pendingFriends: pendingFriends,
+          currentFriends: currentFriends,
         });
       })
       .catch(err => {
         console.log('error in updating friend---', err);
       });
+  }
 
-    let pendingFriends = this.state.pendingFriends;
-    let currentFriends = this.state.currentFriends;
+  handleFriendReject(friend) {
+    let changeFriend = friend;
+    console.log('reject');
+    changeFriend.status = 3;
 
-    let index = pendingFriends.indexOf(this.friend);
-    pendingFriends = pendingFriends
-      .slice(0, index)
-      .concat(pendingFriends.slice(index + 1, pendingFriends.length));
+    FriendServices.editFriend(changeFriend)
+      .then(responseFriend => {
+        console.log('friend updated--->', responseFriend.data);
+        let pendingFriends = this.state.pendingFriends;
 
-    currentFriends.push(this.friend);
+        pendingFriends = pendingFriends.filter(removeFriend => {
+          if (friend !== removeFriend) {
+            return removeFriend;
+          }
+        });
 
-    this.setState({
-      pendingFriends: pendingFriends,
-      currentFriends: currentFriends,
-    });
+        this.setState({
+          pendingFriends: pendingFriends,
+        });
+      })
+      .catch(err => {
+        console.log('error in updating friend---', err);
+      });
   }
 
   renderCurrentFriends() {
@@ -89,9 +109,8 @@ export default class AllFriends extends Component {
                     friend={friend}
                     user={this.state.user}
                     key={key}
-                    handleFriendRequest={(choice, friend) =>
-                      this.handleFriendRequest()
-                    }
+                    handleFriendAccept={() => this.handleFriendAccept(friend)}
+                    handleFriendReject={() => this.handleFriendReject(friend)}
                   />
                 );
               } else {
