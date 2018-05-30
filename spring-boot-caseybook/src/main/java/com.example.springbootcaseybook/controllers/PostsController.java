@@ -24,7 +24,7 @@ public class PostsController {
         return postRepository.findById(postId);
     }
 
-    @DeleteMapping("api/posts/{postId}")
+    @DeleteMapping("/api/posts/{postId}")
     public HttpStatus deletePostById(@PathVariable Long postId) {
         postRepository.deleteById(postId);
         return HttpStatus.OK;

@@ -13,6 +13,9 @@ VALUES
     (1, 2, 3, 'RBritt', 'Doodeitstom'),
     (1, 1, 4, 'CRHarding', 'SSontag'),
     (3, 2, 4, 'RBritt', 'SSontag'),
+    (1, 5, 2, 'SBeauvoir', 'RBritt'),
+    (1, 5, 3, 'SBeauvoir', 'Doodeitstom'),
+    (1, 5, 4, 'SBeauvoir', 'SSontag'),
     (1, 5, 1, 'SBeauvoir', 'CRHarding');
 
 INSERT INTO POSTS (POSTER_ID, POSTER_USER_NAME, TITLE, POST_TEXT)

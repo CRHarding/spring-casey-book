@@ -73,9 +73,11 @@ public class FriendsController {
     //  pending friends, eh?
      */
     @GetMapping("/api/friends/current/{userId}/{status}")
-    public Iterable<Friend> findByStatusAndSentRequestOrReceivedRequest(@PathVariable int userId, @PathVariable int status) {
+    public Iterable<Friend> findByStatusAndSentRequestOrStatusTwoAndReceivedRequest(@PathVariable(value="userId") int userId, @PathVariable(value="status") int status) {
         int sentRequest = userId;
         int receivedRequest = userId;
-        return friendRepository.findByStatusAndSentRequestOrReceivedRequest (sentRequest, receivedRequest, status);
+        System.out.println ("status: " + status);
+        System.out.println ("userid: " + sentRequest);
+        return friendRepository.findByStatusAndSentRequestOrStatusAndReceivedRequest (status, sentRequest, status, receivedRequest);
     }
 }

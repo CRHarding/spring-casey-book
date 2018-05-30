@@ -63,30 +63,38 @@ class SingleFriend extends Component {
     const user = this.state.user;
     const { classes } = this.props;
     const didSend = user.id === friend.sentRequest;
-    console.log(friend);
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
-          Pending friend requests {didSend ? 'to' : 'from'}
+          Pending friend requests {didSend ? 'from' : 'to'}
         </Typography>
-        <Typography>
-          {didSend ? (
-            <Link
-              to={`/users/${friend.receivedRequest}`}
-              style={{ textDecoration: 'none' }}
-            >
-              {friend.receivedRequestUserName}
-            </Link>
-          ) : (
+          {!didSend ? (
+          <Link
+            to={`/users/${friend.receivedRequest}`}
+            style={{ textDecoration: 'none' }}
+          >
+            {friend.receivedRequestUserName}
+          </Link>
+        ) : (
+          <div>
             <Link
               to={`/users/${friend.sentRequest}`}
               style={{ textDecoration: 'none' }}
             >
               {friend.sentRequestUserName}
             </Link>
+            <Typography className={classes.title} color="textSecondary">
+              to:
+            </Typography>
+            <Link
+              to={`/users/${friend.receivedRequest}`}
+              style={{ textDecoration: 'none' }}
+            >
+              {friend.receivedRequestUserName}
+            </Link>
+            </div>
           )}
-        </Typography>
-        {didSend ? (
+        {!didSend ? (
           <Grid>
             <Button
               variant="raised"

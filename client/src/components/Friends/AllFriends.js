@@ -19,23 +19,20 @@ export default class AllFriends extends Component {
   }
 
   componentDidMount() {
-    friendServices.getFriendsByStatus(1, 5).then(responsePendingFriends => {
-      console.log('notcurrent--->', responsePendingFriends.data);
+    friendServices.getFriendsByStatus(1, 1).then(responsePendingFriends => {
       this.setState({
         pendingFriends: responsePendingFriends.data,
         pendingFriendsDataLoaded: true,
       });
     });
 
-    friendServices.getFriendsByStatus(2, 5).then(responseCurrentFriends => {
-      console.log('current--->', responseCurrentFriends.data);
+    friendServices.getFriendsByStatus(2, 1).then(responseCurrentFriends => {
       this.setState({
         currentFriends: responseCurrentFriends.data,
         currentFriendsDataLoaded: true,
       });
     });
   }
-
 
   renderCurrentFriends() {
     this.state.currentFriends.map((friend, key) => {

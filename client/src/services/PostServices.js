@@ -34,7 +34,7 @@ const PostServices = {
     console.log(post);
     return axios({
       method: 'PATCH',
-      url: `api/posts/${post.id}`,
+      url: `/api/posts/${post.id}`,
       data: post,
     });
   },
@@ -42,7 +42,7 @@ const PostServices = {
   deletePost(post) {
     return axios({
       method: 'DELETE',
-      url: `api/posts/${post}`,
+      url: `/api/posts/${post}`,
     });
   },
 };
