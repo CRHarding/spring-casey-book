@@ -5,6 +5,7 @@ import SingleFriend from './SingleFriend';
 
 import FriendServices from '../../services/FriendServices';
 
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -16,7 +17,7 @@ const styles = theme => ({
   },
 });
 
-export default class AllFriends extends Component {
+class AllFriends extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -113,7 +114,6 @@ export default class AllFriends extends Component {
   }
 
   renderPendingFriends() {
-    console.log(this.state.pendingFriends);
     return this.state.pendingFriends.map((friend, key) => {
       if (friend) {
         return (
@@ -131,20 +131,38 @@ export default class AllFriends extends Component {
     });
   }
 
-  renderCurrentFriends() {
+  renderCurrentFriends(classes) {
     console.log(this.state.currentFriends);
-    const { classes } = this.props;
+    let id;
+    if (this.state.isUser) {
+      id = this.state.user.id;
+    } else {
+      id = this.state.friend.id;
+    }
+
     return this.state.currentFriends.map((friend, key) => {
       return (
-        <Grid>
+        <Grid key={key}>
           <Paper key={key}>
-            <Typography className={classes.title} color="textSecondary">
-              <Link
-                to={`/users/${friend.id}`}
-                style={{ textDecoration: 'none' }}
-              >
-                {friend.userName}
-              </Link>
+            <Typography  key={key} className={classes.title} color="textSecondary">
+              {friend.receivedRequest === id ?
+                (
+                  <Link
+                  to={`/users/${friend.sentRequest}`}
+                  style={{ textDecoration: 'none' }}
+                   key={key}
+                  >
+                  {friend.sentRequestUserName}
+                  </Link>
+                ) : (
+                  <Link
+                  to={`/users/${friend.receivedRequest}`}
+                  style={{ textDecoration: 'none' }}
+                   key={key}
+                >
+                  {friend.receivedRequestUserName}
+                </Link>
+              )}
             </Typography>
           </Paper>
         </Grid>
@@ -153,6 +171,7 @@ export default class AllFriends extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <Grid item xs>
         {this.state.isUser ? (
@@ -164,7 +183,7 @@ export default class AllFriends extends Component {
         ) : (
           <Grid item xs>
             {this.state.currentFriendsDataLoaded
-              ? this.renderCurrentFriends()
+              ? this.renderCurrentFriends(classes)
               : ''}
           </Grid>
         )}
@@ -172,3 +191,5 @@ export default class AllFriends extends Component {
     );
   }
 }
+
+export default withStyles(styles)(AllFriends);

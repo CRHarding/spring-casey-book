@@ -37,7 +37,7 @@ class SingleFriend extends Component {
   render() {
     const friend = this.state.friend;
     const user = this.state.user;
-    console.log(friend, user);
+
     const { classes } = this.props;
     const didSend = user.id === friend.sentRequest;
     return (
