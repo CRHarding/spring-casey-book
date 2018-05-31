@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Entity @Table(name = "USERS")
-public class User {
+public class ApplicationUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,4 +30,7 @@ public class User {
 
     @Column(name = "ABOUT_ME")
     private String aboutMe;
+
+    @Column(name = "PASSWORD")
+    private String password;
 }

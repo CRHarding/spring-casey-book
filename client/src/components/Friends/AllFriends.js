@@ -113,22 +113,24 @@ class AllFriends extends Component {
   }
 
   renderPendingFriends() {
-    return this.state.pendingFriends.map((friend, key) => {
-      if (friend) {
-        return (
-          <TabContainer>
-            <SingleFriend
-              friend={friend}
-              user={this.state.user}
-              key={key}
-              handleFriendChoice={this.handleFriendChoice}
-            />
-          </TabContainer>
-        );
-      } else {
-        return null;
-      }
-    });
+    return (
+      <TabContainer>
+        {this.state.pendingFriends.map((friend, key) => {
+          if (friend) {
+            return (
+                <SingleFriend
+                  friend={friend}
+                  user={this.state.user}
+                  key={key}
+                  handleFriendChoice={this.handleFriendChoice}
+                />
+            );
+          } else {
+            return null;
+          }
+        })}
+      </TabContainer>
+    );
   }
 
   renderCurrentFriends(classes) {

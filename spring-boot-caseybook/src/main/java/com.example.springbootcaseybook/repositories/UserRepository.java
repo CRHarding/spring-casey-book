@@ -1,7 +1,8 @@
 package com.example.springbootcaseybook.repositories;
 
-import com.example.springbootcaseybook.models.User;
+import com.example.springbootcaseybook.models.ApplicationUser;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<ApplicationUser, Long> {
+    ApplicationUser findByUserName(String userName);
 }
