@@ -15,12 +15,15 @@ const styles = theme => ({
 const UserPosts = props => {
   const user = props.user;
   const userPosts = props.posts;
+  const friend = props.friend;
+  const isUser = props.isUser;
+
   return (
     <Grid item xs>
       {userPosts.map((post, key) => {
         if (post) {
           return (
-            <SinglePost post={post} key={key} user={user} />
+            <SinglePost post={post} key={key} user={user} friend={friend} isUser={isUser}/>
           );
         } else {
           return null;

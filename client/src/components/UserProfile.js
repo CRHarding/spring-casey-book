@@ -29,22 +29,29 @@ class UserProfile extends Component {
     this.state = {
       showPostForm: false,
       id: this.props.match.params.id,
-      user: null,
-      userDataLoaded: false,
+      user: {
+        userName: 'CRHarding',
+        id: 1,
+      },
+      friend: null,
+      friendDataLoaded: false,
+      isUser: false,
     };
     this.handlePostFormButtonClick = this.handlePostFormButtonClick.bind(this);
   }
 
   componentDidMount() {
     UserServices.getOneUser(this.state.id)
-      .then(user => {
+      .then(friend => {
+        const checkIfUser = friend.data.id === this.state.user.id;
         this.setState({
-          user: user.data,
-          userDataLoaded: true,
+          friend: friend.data,
+          friendDataLoaded: true,
+          isUser: checkIfUser,
         });
       })
       .catch(err => {
-        console.log('error in innerloop getcurrentfriendsbyid--->', err);
+        console.log('error in innerloop get one friend--->', err);
       });
   }
 
@@ -56,7 +63,8 @@ class UserProfile extends Component {
 
   render() {
     const { classes } = this.props;
-    const user = this.state.user;
+    const friend = this.state.friend;
+    const isUser = this.state.isUser;
     const post = {
       title: 'Enter your post Title',
       postText: 'Enter your post content',
@@ -64,16 +72,16 @@ class UserProfile extends Component {
 
     return (
       <Grid className={classes.root}>
-        {this.state.userDataLoaded ? (
+        {this.state.friendDataLoaded ? (
           <Grid>
             <Grid container spacing={24}>
-              <Header user={this.state.user} />
+              <Header friend={this.state.friend} />
             </Grid>
             <Paper className={classes.paper} elevation={4}>
               <Typography className={classes.title} color="textSecondary">
-                Full Name: {user.firstName} {user.lastName}
+                Full Name: {friend.firstName} {friend.lastName}
               </Typography>
-              <Typography>About Me: {user.aboutMe}</Typography>
+              <Typography>About Me: {friend.aboutMe}</Typography>
             </Paper>
             <Grid
               container
@@ -81,18 +89,20 @@ class UserProfile extends Component {
               justify="space-between"
               alignItems="center"
             >
-              <AllFriends user={user} />
-              <AllPosts user={user} />
+              <AllFriends friend={friend} user={this.state.user}/>
+              <AllPosts friend={friend} user={this.state.user}/>
             </Grid>
-            <Button
-              type="submit"
-              variant="raised"
-              color="primary"
-              className={classes.button}
-              onClick={this.handlePostFormButtonClick}
-            >
-              {this.state.showPostForm ? 'Cancel' : 'Post'}
-            </Button>
+            {isUser ? (
+              <Button
+                type="submit"
+                variant="raised"
+                color="primary"
+                className={classes.button}
+                onClick={this.handlePostFormButtonClick}
+              >
+                {this.state.showPostForm ? 'Cancel' : 'Post'}
+              </Button>
+            ) : '' }
             <Grid container spacing={24}>
               {this.state.showPostForm ? (
                 <AddPost user={this.state.user} post={post} />

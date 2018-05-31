@@ -37,6 +37,8 @@ class SinglePost extends Component {
       showEditForm: false,
       post: this.props.post,
       user: this.props.user,
+      friend: this.props.friend,
+      isUser: this.props.isUser,
     };
 
     this.showEditForm = this.showEditForm.bind(this);
@@ -60,8 +62,12 @@ class SinglePost extends Component {
 
   render() {
     const { classes } = this.props;
-    let post = this.state.post;
+    const post = this.state.post;
+    const user = this.state.user;
+    const friend = this.state.friend;
+    const isUser = this.state.isUser;
 
+    console.log(user, post);
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
@@ -73,20 +79,24 @@ class SinglePost extends Component {
         <Divider />
         <br />
         <Typography component="p">{post.postText}</Typography>
-        <IconButton
-          className={classes.button}
-          aria-label="Delete"
-          onClick={() => this.handleDelete(post.id)}
-        >
-          <DeleteIcon />
-        </IconButton>
-        <IconButton
-          className={classes.button}
-          aria-label="edit"
-          onClick={this.showEditForm}
-        >
-          <EditIcon />
-        </IconButton>
+        {isUser ? (
+          <div>
+            <IconButton
+              className={classes.button}
+              aria-label="Delete"
+              onClick={() => this.handleDelete(post.id)}
+            >
+              <DeleteIcon />
+            </IconButton>
+            <IconButton
+              className={classes.button}
+              aria-label="edit"
+              onClick={this.showEditForm}
+            >
+              <EditIcon />
+            </IconButton>
+          </div>
+        ) : '' }
         {this.state.showEditForm ? (
           <EditPost
             post={this.state.post}

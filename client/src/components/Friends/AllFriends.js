@@ -13,13 +13,15 @@ export default class AllFriends extends Component {
       pendingFriends: null,
       pendingFriendsDataLoaded: false,
       user: this.props.user,
+      friend: this.props.friend,
+      isUser: this.props.isUser,
       currentFriends: null,
       currentFriendDataLoaded: false,
     };
   }
 
   componentDidMount() {
-    FriendServices.getFriendsByStatus(1, this.state.user.id).then(
+    FriendServices.getFriendsByStatus(1, this.state.friend.id).then(
       responsePendingFriends => {
         this.setState({
           pendingFriends: responsePendingFriends.data,
@@ -28,7 +30,7 @@ export default class AllFriends extends Component {
       },
     );
 
-    FriendServices.getFriendsByStatus(2, this.state.user.id).then(
+    FriendServices.getFriendsByStatus(2, this.state.friend.id).then(
       responseCurrentFriends => {
         this.setState({
           currentFriends: responseCurrentFriends.data,
@@ -101,24 +103,31 @@ export default class AllFriends extends Component {
   render() {
     return (
       <Grid item xs>
-        {this.state.pendingFriendsDataLoaded
-          ? this.state.pendingFriends.map((friend, key) => {
-              if (friend) {
-                return (
-                  <SingleFriend
-                    friend={friend}
-                    user={this.state.user}
-                    key={key}
-                    handleFriendAccept={() => this.handleFriendAccept(friend)}
-                    handleFriendReject={() => this.handleFriendReject(friend)}
-                  />
-                );
-              } else {
-                return null;
-              }
-            })
-          : ''}
-        {this.state.currentFriendsDataLoaded ? this.renderCurrentFriends() : ''}
+        {this.state.isUser ? (
+          <div>
+            {this.state.pendingFriendsDataLoaded
+              ? this.state.pendingFriends.map((friend, key) => {
+                  if (friend) {
+                    return (
+                      <SingleFriend
+                        friend={friend}
+                        user={this.state.user}
+                        key={key}
+                        handleFriendAccept={() => this.handleFriendAccept(friend)}
+                        handleFriendReject={() => this.handleFriendReject(friend)}
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
+                })
+              : ''}
+            </div>
+        ) : (
+          <div>
+            {this.state.currentFriendsDataLoaded ? this.renderCurrentFriends() : ''}
+          </div>
+        )}
       </Grid>
     );
   }

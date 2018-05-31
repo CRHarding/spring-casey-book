@@ -11,6 +11,7 @@ class AllPosts extends Component {
       posts: null,
       postDataLoaded: false,
       user: this.props.user,
+      friend: this.props.friend,
     };
   }
 
@@ -24,11 +25,15 @@ class AllPosts extends Component {
   }
 
   renderUserPosts() {
+    const isUser = this.state.user.id === this.state.friend.id;
     const posts = this.state.posts;
+
     return (
       <UserPosts
         posts={posts}
         user={this.state.user}
+        friend={this.state.friend}
+        isUser={isUser}
         manageDelete={this.manageDelete}
       />
     );

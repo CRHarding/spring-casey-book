@@ -24,6 +24,7 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
+  console.log(props.friend);
 
   return (
     <div className={classes.root}>
@@ -36,7 +37,7 @@ function ButtonAppBar(props) {
           <Link to="/" style={{ textDecoration: 'none' }}>Casey Book</Link>
         </Typography>
         <Typography variant="title" color="inherit" className={classes.flex}>
-          {props.user ? props.user.userName : 'Welcome!'}
+          {props.friend ? props.friend.userName : 'Welcome!'}
         </Typography>
         <Button color="inherit">Login</Button>
         </Toolbar>
