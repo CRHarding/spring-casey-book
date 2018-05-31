@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
+import RenderUserRequest from '../partials/RenderUserRequest';
+
 function getStyles() {
   const styles = theme => ({
     card: {
@@ -41,21 +43,10 @@ class UserFriends extends Component {
   renderUserReceivedRequest() {
     if (this.state.receivedRequest) {
       return (
-        <Card className={this.getCard()}>
-          {this.state.receivedRequest.map((friend, key) => {
-            if (friend) {
-              return (
-                <SingleFriend
-                  friend={friend}
-                  user={this.state.user}
-                  key={key}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-        </Card>
+        <RenderUserRequest
+          requset={this.state.receivedRequest}
+          user={this.state.user}
+        />
       );
     }
   }
@@ -63,15 +54,10 @@ class UserFriends extends Component {
   renderUserSentRequest() {
     if (this.state.sentRequest) {
       return (
-        <Card className={this.getCard()}>
-          {this.state.sentRequest.map((friend, key) => {
-            if (friend) {
-              return <SingleFriend friend={friend} key={key} user={this.state.user}/>;
-            } else {
-              return null;
-            }
-          })}
-        </Card>
+        <RenderUserRequest
+          requset={this.state.sentRequest}
+          user={this.state.user}
+        />
       );
     }
   }

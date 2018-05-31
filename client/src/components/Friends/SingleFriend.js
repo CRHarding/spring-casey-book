@@ -88,14 +88,14 @@ class SingleFriend extends Component {
             <Button
               variant="raised"
               size="small"
-              onClick={() => this.props.handleFriendAccept(friend)}
+              onClick={() => this.props.handleFriendChoice(friend, true)}
             >
               Accept
             </Button>
             <Button
               variant="raised"
               size="small"
-              onClick={() => this.props.handleFriendReject(friend)}
+              onClick={() => this.props.handleFriendChoice(friend, false)}
             >
               Reject
             </Button>
