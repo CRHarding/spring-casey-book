@@ -16,12 +16,21 @@ class AllPosts extends Component {
   }
 
   componentDidMount() {
-    PostServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
-      this.setState({
-        posts: responsePosts.data,
-        postDataLoaded: true,
+    if (this.state.user.id === this.state.friend.id) {
+      PostServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
+        this.setState({
+          posts: responsePosts.data,
+          postDataLoaded: true,
+        });
       });
-    });
+    } else {
+      PostServices.getPostsByUserId(this.state.friend.id).then(responsePosts => {
+        this.setState({
+          posts: responsePosts.data,
+          postDataLoaded: true,
+        });
+      });
+    }
   }
 
   renderUserPosts() {

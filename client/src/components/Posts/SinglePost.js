@@ -64,14 +64,14 @@ class SinglePost extends Component {
     const { classes } = this.props;
     const post = this.state.post;
     const user = this.state.user;
-    const friend = this.state.friend;
     const isUser = this.state.isUser;
 
-    console.log(user, post);
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
-          <Link to={`/users/${this.state.user.id}`} style={{ textDecoration: 'none' }}>{post.posterUserName}'s post:{' '}</Link>
+          <Link to={`/users/${user.id}`} style={{ textDecoration: 'none' }}>
+            {post.posterUserName}'s post:{' '}
+          </Link>
         </Typography>
         <Typography variant="headline" component="h2">
           {post.title}
@@ -96,15 +96,10 @@ class SinglePost extends Component {
               <EditIcon />
             </IconButton>
           </div>
-        ) : '' }
-        {this.state.showEditForm ? (
-          <EditPost
-            post={this.state.post}
-            user={this.state.user}
-          />
         ) : (
           ''
         )}
+        {this.state.showEditForm ? <EditPost post={post} user={user} /> : ''}
       </Paper>
     );
   }

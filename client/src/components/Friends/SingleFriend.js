@@ -7,8 +7,6 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import FriendServices from '../../services/FriendServices';
-
 const styles = theme => ({
   card: {
     minWidth: 275,
@@ -39,6 +37,7 @@ class SingleFriend extends Component {
   render() {
     const friend = this.state.friend;
     const user = this.state.user;
+    console.log(friend, user);
     const { classes } = this.props;
     const didSend = user.id === friend.sentRequest;
     return (

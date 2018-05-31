@@ -29,19 +29,16 @@ const styles = theme => ({
   },
 });
 
-const user = {
-  userName: 'CRHarding',
-  id: 1,
-};
-
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: user,
+      user: null,
       users: null,
       usersDataLoaded: false,
       usersChoice: false,
+      isUser: true,
+      isLoggedIn: false,
     };
   }
 
@@ -62,11 +59,11 @@ class Home extends Component {
     this.setState({
       user: user,
       usersChoice: !this.state.usersChoice,
+      isLoggedIn: true,
     });
   }
 
   render() {
-    //Hard coded user to be replaced by user auth down the road...
     const { classes } = this.props;
 
     return (
@@ -77,11 +74,27 @@ class Home extends Component {
           justify="space-between"
           alignItems="center"
         >
-          <Header user={this.state.user} />
+          <Header user={this.state.user} isLoggedIn={this.state.isLoggedIn} />
         </Grid>
         <Grid container spacing={24}>
-          {this.state.usersChoice ? <AllFriends user={this.state.user} /> : '' }
-          {this.state.usersChoice ? <AllPosts user={this.state.user} /> : '' }
+          {this.state.usersChoice ? (
+            <AllFriends
+              user={this.state.user}
+              friend={this.state.user}
+              isUser={this.state.isUser}
+            />
+          ) : (
+            ''
+          )}
+          {this.state.usersChoice ? (
+            <AllPosts
+              user={this.state.user}
+              friend={this.state.user}
+              isUser={this.state.isUser}
+            />
+          ) : (
+            ''
+          )}
         </Grid>
         <Grid container spacing={24}>
           {this.state.usersDataLoaded
