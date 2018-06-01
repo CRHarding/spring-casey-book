@@ -1,6 +1,6 @@
 package com.example.springbootcaseybook.security;
 
-import com.example.springbootcaseybook.models.ApplicationUser;
+import com.example.springbootcaseybook.user.ApplicationUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -38,6 +38,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             User creds = new ObjectMapper()
                     .readValue(req.getInputStream(), User.class);
 
+            System.out.println(creds);
+
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             creds.getUsername(),
@@ -45,6 +47,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                             new ArrayList<>())
             );
         } catch (IOException e) {
+            System.out.println(e);
             throw new RuntimeException(e);
         }
     }

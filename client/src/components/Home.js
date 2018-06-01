@@ -9,7 +9,6 @@ import Header from './Partials/Header';
 import AllPosts from './Posts/AllPosts';
 import AllFriends from './Friends/AllFriends';
 import SignupForm from './Partials/FormPartials/SignupForm';
-import LoginForm from './Partials/FormPartials/LoginForm';
 
 import UserServices from '../services/UserServices';
 

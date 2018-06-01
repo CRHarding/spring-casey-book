@@ -6,6 +6,7 @@ export const RenderTextField = props => (
     hintText={props.label}
     floatingLabelText={props.label}
     errorText={props.touched && props.error}
+    onChange={() => props.handleChange()}
     {...props}
   />
 );
@@ -18,6 +19,7 @@ export const RenderMultilineTextField = props => (
     rowsMax="4"
     floatingLabelText={props.label}
     errorText={props.touched && props.error}
+    onChange={() => props.handleChange()}
     {...props}
   />
 );
@@ -30,6 +32,7 @@ export const RenderPassword = props => (
     hintText={props.label}
     floatingLabelText={props.label}
     errorText={props.touched && props.error}
+    onChange={() => props.handleChange()}
     {...props}
   />
 );

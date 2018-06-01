@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
+
 import TextField from '@material-ui/core/TextField';
-import { RenderTextField, RenderMultilineTextField, RenderPassword } from './RenderFormFields';
-import Validate from '../../Authenticate/Validate';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+import UserServices from '../../../services/UserServices';
 
 const styles = theme => ({
   container: {
@@ -34,7 +36,36 @@ class LoginForm extends Component {
       submitting: false,
     };
     this.reset = this.reset.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const newUser = {
+      userName: this.state.userName,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      aboutMe: this.state.aboutMe,
+      password: this.state.password,
+    };
+
+    UserServices.addUser(newUser)
+      .then(user => {
+        console.log('success in add user signup form--->', user);
+      })
+      .catch(err => {
+        console.log('error in add user signup form--->', err);
+      });
+  }
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+      pristine: false,
+    });
+  };
 
   reset() {
     this.setState({
@@ -51,44 +82,102 @@ class LoginForm extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <RenderTextField name="userName" label="User Name" />
+          <TextField
+            id="userName"
+            label="User Name"
+            className={classes.textField}
+            value={this.state.userName}
+            margin="normal"
+            onChange={this.handleChange('userName')}
+          />
         </div>
         <div>
-          <RenderTextField name="firstName" label="First Name" />
+          <TextField
+            id="firstName"
+            label="First Name"
+            className={classes.textField}
+            value={this.state.firstName}
+            margin="normal"
+            onChange={this.handleChange('firstName')}
+          />
         </div>
         <div>
-          <RenderTextField name="lastName" label="Last Name" />
+          <TextField
+            id="lastName"
+            label="Last Name"
+            className={classes.textField}
+            value={this.state.lastName}
+            margin="normal"
+            onChange={this.handleChange('lastName')}
+          />
         </div>
         <div>
-          <RenderTextField name="email" label="Email" />
+          <TextField
+            id="email"
+            label="Email"
+            className={classes.textField}
+            value={this.state.email}
+            margin="normal"
+            onChange={this.handleChange('email')}
+          />
         </div>
         <div>
-          <RenderMultilineTextField name="aboutMe" label="About Me" />
+          <TextField
+            id="textarea"
+            label="About Me"
+            placeholder="Placeholder"
+            multiline
+            className={classes.textField}
+            margin="normal"
+            onChange={this.handleChange('aboutMe')}
+          />
         </div>
         <div>
-          <RenderPassword name="password" label="Password" />
+          <TextField
+            id="password"
+            label="Password"
+            name="password"
+            className={classes.textField}
+            type="password"
+            autoComplete="current-password"
+            margin="normal"
+            onChange={this.handleChange('password')}
+          />
         </div>
         <div>
-          <RenderPassword name="repeatPassword" label="Repeat Password" />
+          <TextField
+            id="repeatPassword"
+            label="Repeat Password"
+            name="repeatPassword"
+            className={classes.textField}
+            type="password"
+            margin="normal"
+            onChange={this.handleChange('repeatPassword')}
+          />
         </div>
         <div>
-          <button type="submit" disabled={this.state.pristine || this.state.submitting}>
+          <Button
+            type="submit"
+            disabled={this.state.pristine || this.state.submitting}
+            onClick={this.handleSubmit}
+          >
             Submit
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             disabled={this.state.pristine || this.state.submitting}
             onClick={this.reset}
           >
             Clear Values
-          </button>
+          </Button>
         </div>
       </form>
     );
   }
 }
 
-export default LoginForm;
+export default withStyles(styles)(LoginForm);

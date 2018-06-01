@@ -5,12 +5,13 @@ DROP TABLE IF EXISTS COMMENTS;
 
 create table USERS (
     ID serial PRIMARY KEY,
-    USER_NAME varchar(100),
+    USERNAME varchar(100),
     FIRST_NAME varchar(100),
     LAST_NAME varchar(100),
     EMAIL varchar(100),
     LOCATION varchar(100),
     ABOUT_ME varchar(500),
+    PASSWORD varchar(100),
     TIME_ADDED TIMESTAMP default CURRENT_TIMESTAMP
 );
 
@@ -19,8 +20,8 @@ create table FRIENDS (
     STATUS integer,
     SENT_REQUEST integer,
     RECEIVED_REQUEST integer,
-    SENT_REQUEST_USER_NAME varchar(100),
-    RECEIVED_REQUEST_USER_NAME varchar(100),
+    SENT_REQUEST_USERNAME varchar(100),
+    RECEIVED_REQUEST_USERNAME varchar(100),
     TIME_ADDED TIMESTAMP default CURRENT_TIMESTAMP,
     CONSTRAINT SENT_REQUEST FOREIGN KEY(SENT_REQUEST)
         REFERENCES USERS (ID)
@@ -34,7 +35,7 @@ create table POSTS (
     ID serial PRIMARY KEY,
     TITLE varchar(50),
     POSTER_ID integer,
-    POSTER_USER_NAME varchar(100),
+    POSTER_USERNAME varchar(100),
     POST_TEXT varchar(500),
     NUMBER_OF_LIKES integer DEFAULT 0,
     NUMBER_OF_COMMENTS integer DEFAULT 0,
@@ -49,7 +50,7 @@ create table COMMENTS (
     ID serial PRIMARY KEY,
     COMMENTER_ID integer,
     POST_ID integer,
-    COMMENTER_USER_NAME varchar(100),
+    COMMENTER_USERNAME varchar(100),
     COMMENT_TEXT varchar(500),
     NUMBER_OF_LIKES integer DEFAULT 0,
     TIME_ADDED TIMESTAMP default CURRENT_TIMESTAMP,
