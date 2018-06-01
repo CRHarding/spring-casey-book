@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Header from './Partials/Header';
 import AllPosts from './Posts/AllPosts';
 import AllFriends from './Friends/AllFriends';
+import SignupForm from './Partials/FormPartials/SignupForm';
+import LoginForm from './Partials/FormPartials/LoginForm';
 
 import UserServices from '../services/UserServices';
 
@@ -114,6 +116,7 @@ class Home extends Component {
                 );
               })
             : ''}
+            <SignupForm />
         </Grid>
       </Grid>
     );

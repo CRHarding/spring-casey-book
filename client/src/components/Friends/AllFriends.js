@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SingleFriend from './SingleFriend';
-import RenderCurrentFriends from '../Partials/RenderCurrentFriends';
+import RenderCurrentFriends from '../Partials/RenderPartials/RenderCurrentFriends';
 import FriendServices from '../../services/FriendServices';
 
 import { withStyles } from '@material-ui/core/styles';
