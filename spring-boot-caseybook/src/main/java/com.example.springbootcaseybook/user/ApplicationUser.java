@@ -4,6 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
