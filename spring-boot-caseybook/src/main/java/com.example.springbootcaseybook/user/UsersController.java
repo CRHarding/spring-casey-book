@@ -1,6 +1,7 @@
 package com.example.springbootcaseybook.user;
 
-import com.example.springbootcaseybook.post.Post;
+import com.example.springbootcaseybook.user.ApplicationUser;
+import com.example.springbootcaseybook.user.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -31,11 +32,6 @@ public class UsersController {
         public Optional<ApplicationUser> findUserById(@PathVariable Long userId) {
             return applicationUserRepository.findById(userId);
         }
-
-    @GetMapping("/users/posts/{userId}")
-        public Optional<Post> findPostsByUserId(@PathVariable Long userId) {
-            return applicationUserRepository.findPostsByUserId(userId);
-    }
 
     @DeleteMapping("/users/{userId}")
         public HttpStatus deleteUserById(@PathVariable Long userId) {

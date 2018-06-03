@@ -66,7 +66,7 @@ class Home extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state.users);
+
     return (
       <Grid className={classes.root}>
         <Grid
@@ -115,7 +115,7 @@ class Home extends Component {
                 );
               })
             : ''}
-            {/* <SignupForm /> */}
+            <SignupForm />
         </Grid>
       </Grid>
     );

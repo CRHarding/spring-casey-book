@@ -1,35 +1,18 @@
 package com.example.springbootcaseybook.user;
 
 import lombok.*;
-
-import java.util.Collections;
-import java.util.HashSet;
+import javax.persistence.*;
 import java.util.Set;
 import java.util.List;
-import javax.persistence.*;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.springbootcaseybook.post.Post;
-import com.example.springbootcaseybook.friend.Friend;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@Entity
-@Table(name = "USERS")
+@Data
+@AllArgsConstructor @NoArgsConstructor @Getter @Setter
+@Entity @Table(name = "USERS")
 public class ApplicationUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToMany(mappedBy = "posterId")
-    private Set<Post> posts = new HashSet<> ();
-
-    @OneToMany(mappedBy = "sentRequest")
-    private Set<Friend> sentRequestFriends = new HashSet<> ();
-
-    @OneToMany(mappedBy = "receivedRequest")
-    private Set<Friend> receivedRequestFriends = new HashSet<> ();
 
     @Column(name = "USERNAME")
     private String username;

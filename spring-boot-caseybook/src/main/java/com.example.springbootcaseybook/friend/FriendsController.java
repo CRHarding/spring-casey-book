@@ -40,6 +40,8 @@ public class FriendsController {
         Friend friendFromDb = friendRepository.findById(friendId).get();
 
         friendFromDb.setStatus(friendRequest.getStatus());
+        friendFromDb.setSentRequest(friendRequest.getSentRequest());
+        friendFromDb.setReceivedRequest(friendRequest.getReceivedRequest());
 
         return friendRepository.save(friendFromDb);
     }
