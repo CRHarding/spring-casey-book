@@ -25,17 +25,17 @@ repositories {
 
 
 dependencies {
-	compile 'org.flywaydb:flyway-core'
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compileOnly("org.projectlombok:lombok:1.16.16")
+	compile "org.flywaydb:flyway-core"
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile("org.springframework.boot:spring-boot-starter-security")
 	compile("io.jsonwebtoken:jjwt:0.7.0")
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	runtime 'org.springframework.boot:spring-boot-devtools'
-	runtime('org.postgresql:postgresql')
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+	runtime ("org.springframework.boot:spring-boot-devtools")
+	runtime("org.postgresql:postgresql")
 	runtime("javax.xml.bind:jaxb-api:2.2.11")
 	runtime("com.sun.xml.bind:jaxb-core:2.2.11")
 	runtime("com.sun.xml.bind:jaxb-impl:2.2.11")
 	runtime("javax.activation:activation:1.1.1")
-	compileOnly 'org.projectlombok:lombok'
 }
