@@ -4,9 +4,9 @@ import com.example.springbootcaseybook.post.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -15,11 +15,8 @@ public class UsersController {
     @Autowired
     private ApplicationUserRepository applicationUserRepository;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    public UsersController(ApplicationUserRepository applicationUserRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UsersController(ApplicationUserRepository applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping("/users")
@@ -32,11 +29,6 @@ public class UsersController {
             return applicationUserRepository.findById(userId);
         }
 
-    @GetMapping("/users/posts/{userId}")
-        public Optional<Post> findPostsByUserId(@PathVariable Long userId) {
-            return applicationUserRepository.findPostsByUserId(userId);
-    }
-
     @DeleteMapping("/users/{userId}")
         public HttpStatus deleteUserById(@PathVariable Long userId) {
             applicationUserRepository.deleteById(userId);
@@ -46,7 +38,6 @@ public class UsersController {
     @PostMapping("/users")
         public void createNewUser(@RequestBody ApplicationUser newUser) {
             System.out.println(newUser);
-            newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
             applicationUserRepository.save(newUser);
         }
 

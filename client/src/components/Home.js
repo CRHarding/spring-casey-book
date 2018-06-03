@@ -46,6 +46,7 @@ class Home extends Component {
   componentDidMount() {
     UserServices.getAllUsers()
       .then(users => {
+        console.log(users);
         this.setState({
           users: users.data,
           usersDataLoaded: true,
@@ -115,7 +116,6 @@ class Home extends Component {
                 );
               })
             : ''}
-            {/* <SignupForm /> */}
         </Grid>
       </Grid>
     );

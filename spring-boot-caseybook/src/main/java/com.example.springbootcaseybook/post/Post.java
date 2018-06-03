@@ -19,6 +19,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name="POSTER_ID")
+    @JsonIgnore
     private ApplicationUser posterId;
 
     @Column(name = "TITLE")
