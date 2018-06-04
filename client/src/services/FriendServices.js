@@ -59,8 +59,9 @@ const FriendServices = {
   },
 
   editFriend(friend) {
+    console.log(friend);
     return axios({
-      method: 'PATCH',
+      method: 'PUT',
       url: `/api/friends/${friend.id}`,
       data: friend,
     });

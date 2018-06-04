@@ -8,7 +8,6 @@ import Paper from '@material-ui/core/Paper';
 import Header from './Partials/Header';
 import AllPosts from './Posts/AllPosts';
 import AllFriends from './Friends/AllFriends';
-import SignupForm from './Partials/FormPartials/SignupForm';
 
 import UserServices from '../services/UserServices';
 
@@ -46,7 +45,6 @@ class Home extends Component {
   componentDidMount() {
     UserServices.getAllUsers()
       .then(users => {
-        console.log(users);
         this.setState({
           users: users.data,
           usersDataLoaded: true,
@@ -67,7 +65,6 @@ class Home extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state.users);
     return (
       <Grid className={classes.root}>
         <Grid

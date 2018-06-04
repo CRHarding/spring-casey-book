@@ -6,7 +6,7 @@ VALUES
     ('SSontag', 'Susan', 'Sontag', 's.sontag@gmail.com', 'New York, New York', 'Youve never heard of me, have you?'),
     ('SBeauvoir', 'Simone', 'De Beauvoir', 's.beauvoir@gmail.com', 'New York, New York', 'You dont even read, bro');
 
-INSERT INTO FRIENDS (STATUS, SENT_REQUEST, RECEIVED_REQUEST, SENT_REQUEST_USERNAME, RECEIVED_REQUEST_USERNAME)
+INSERT INTO FRIENDS (STATUS, FRIEND_SENT_REQUEST, FRIEND_RECEIVED_REQUEST, SENT_REQUEST_USERNAME, RECEIVED_REQUEST_USERNAME)
 VALUES
     (2, 1, 2, 'CRHarding', 'RBritt'),
     (2, 1, 3, 'CRHarding', 'Doodeitstom'),

@@ -43,7 +43,7 @@ function ButtonAppBar(props) {
         </Typography>
         <Typography variant="title" color="inherit" className={classes.flex}>
           {props.isLoggedIn ? (
-            isFriend ? props.friend.userName : props.user.userName
+            isFriend ? props.friend.username : props.user.username
           ) : 'Welcome!'}
 
         </Typography>

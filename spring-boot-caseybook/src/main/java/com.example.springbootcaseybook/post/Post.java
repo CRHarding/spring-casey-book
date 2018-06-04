@@ -1,7 +1,9 @@
 package com.example.springbootcaseybook.post;
 
 import com.example.springbootcaseybook.user.ApplicationUser;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import java.util.List;
 import javax.persistence.*;
@@ -19,8 +21,11 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name="POSTER_ID")
-    @JsonIgnore
+    @JsonIgnoreProperties("posts")
     private ApplicationUser posterId;
+
+    @Column(name = "POSTER_USERNAME")
+    private String posterUsername;
 
     @Column(name = "TITLE")
     private String title;

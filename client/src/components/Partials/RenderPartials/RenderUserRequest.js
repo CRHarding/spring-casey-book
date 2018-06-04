@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 const renderUserRequest = props => {
   const request = props.requests;
   const user = props.user;
+  console.log(request);
 
   return (
     <Card className={this.getCard()}>

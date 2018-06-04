@@ -66,11 +66,12 @@ class SinglePost extends Component {
     const user = this.state.user;
     const isUser = this.state.isUser;
 
+
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
           <Link to={`/users/${user.id}`} style={{ textDecoration: 'none' }}>
-            {post.posterUserName}'s post:{' '}
+            {post.posterUsername}'s post:{' '}
           </Link>
         </Typography>
         <Typography variant="headline" component="h2">

@@ -39,7 +39,8 @@ class SingleFriend extends Component {
     const user = this.state.user;
 
     const { classes } = this.props;
-    const didSend = user.id === friend.sentRequest;
+    const didSend = user.username === friend.sentRequestUsername;
+
     return (
       <Paper className={classes.root} elevation={4}>
         <Typography className={classes.title} color="textSecondary">
@@ -48,19 +49,19 @@ class SingleFriend extends Component {
           {!didSend ? (
           <div>
             <Link
-              to={`/users/${friend.receivedRequest}`}
+              to={`/users/${friend.id}`}
               style={{ textDecoration: 'none' }}
             >
-              {friend.receivedRequestUserName}
+              {friend.receivedRequestUsername}
             </Link>
             <Typography className={classes.title} color="textSecondary">
               from:
             </Typography>
             <Link
-              to={`/users/${friend.sentRequest}`}
+              to={`/users/${friend.id}`}
               style={{ textDecoration: 'none' }}
             >
-              {friend.sentRequestUserName}
+              {friend.sentRequestUsername}
             </Link>
             <br/>
           </div>
@@ -70,16 +71,16 @@ class SingleFriend extends Component {
               to={`/users/${friend.sentRequest}`}
               style={{ textDecoration: 'none' }}
             >
-              {friend.sentRequestUserName}
+              {friend.sentRequestUsername}
             </Link>
             <Typography className={classes.title} color="textSecondary">
               to:
             </Typography>
             <Link
-              to={`/users/${friend.receivedRequest}`}
+              to={`/users/${friend.id}`}
               style={{ textDecoration: 'none' }}
             >
-              {friend.receivedRequestUserName}
+              {friend.receivedRequestUsername}
             </Link>
             </div>
           )}

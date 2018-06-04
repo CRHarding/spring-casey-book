@@ -35,21 +35,21 @@ const renderCurrentFriends = props => {
     <Grid key={key}>
       <Paper key={key}>
         <Typography key={key} className={classes.title} color="textSecondary">
-          {friend.receivedRequest === id ? (
+          {friend.id === id ? (
             <Link
-              to={`/users/${friend.sentRequest}`}
+              to={`/users/${friend.id}`}
               style={{ textDecoration: 'none' }}
               key={key}
             >
-              {friend.sentRequestUserName}
+              {friend.receivedRequestUsername}
             </Link>
           ) : (
             <Link
-              to={`/users/${friend.receivedRequest}`}
+              to={`/users/${friend.id}`}
               style={{ textDecoration: 'none' }}
               key={key}
             >
-              {friend.receivedRequestUserName}
+              {friend.sentRequestUsername}
             </Link>
           )}
         </Typography>

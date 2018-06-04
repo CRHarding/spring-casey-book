@@ -2,57 +2,30 @@ import React, { Component } from 'react';
 import UserPosts from './UserPosts';
 import Grid from '@material-ui/core/Grid';
 
-import PostServices from '../../services/PostServices';
-
 class AllPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: null,
+      posts: this.props.user.posts,
       postDataLoaded: false,
       user: this.props.user,
       friend: this.props.friend,
     };
   }
 
-  componentDidMount() {
-    if (this.state.user.id === this.state.friend.id) {
-      PostServices.getPostsByUserId(this.state.user.id).then(responsePosts => {
-        this.setState({
-          posts: responsePosts.data,
-          postDataLoaded: true,
-        });
-      });
-    } else {
-      PostServices.getPostsByUserId(this.state.friend.id).then(responsePosts => {
-        this.setState({
-          posts: responsePosts.data,
-          postDataLoaded: true,
-        });
-      });
-    }
-  }
-
-  renderUserPosts() {
+  render() {
     const isUser = this.state.user.id === this.state.friend.id;
     const posts = this.state.posts;
 
     return (
-      <UserPosts
-        posts={posts}
-        user={this.state.user}
-        friend={this.state.friend}
-        isUser={isUser}
-        manageDelete={this.manageDelete}
-      />
-    );
-  }
-
-  render() {
-    return (
       <Grid item xs>
-        {this.state.postDataLoaded ? this.renderUserPosts() : ''}
-      </Grid>
+        <UserPosts
+          posts={posts}
+          user={this.state.user}
+          friend={this.state.friend}
+          isUser={isUser}
+          manageDelete={this.manageDelete}
+        />      </Grid>
     );
   }
 }

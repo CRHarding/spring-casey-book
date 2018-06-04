@@ -1,7 +1,6 @@
 package com.example.springbootcaseybook.friend;
 
-import com.example.springbootcaseybook.friend.Friend;
-import com.example.springbootcaseybook.friend.FriendRepository;
+import com.example.springbootcaseybook.user.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,7 @@ public class FriendsController {
         return friendRepository.save(newFriend);
     }
 
-    @PatchMapping("/api/friends/{friendId}")
+    @PutMapping("/api/friends/{friendId}")
     public Friend updateFriendById(@PathVariable Long friendId, @RequestBody Friend friendRequest) {
         Friend friendFromDb = friendRepository.findById(friendId).get();
 
@@ -55,25 +54,17 @@ public class FriendsController {
     //  'receivedFriendRequests' in state to properly update
     //  the view.
      */
-    @GetMapping("/api/friends/sent/{sentRequest}")
-    public Iterable<Friend> findBySentRequest(@PathVariable int sentRequest) { return friendRepository.findBySentRequest(sentRequest); }
+    @GetMapping("/api/friends/sent/{friendSentRequest}")
+    public Iterable<Friend> findByFriendSentRequest(@PathVariable int friendSentRequest) { return friendRepository.findByFriendSentRequest(friendSentRequest); }
 
-    @GetMapping("/api/friends/received/{receivedRequest}")
-    public Iterable<Friend> findByReceivedRequest(@PathVariable int receivedRequest) { return friendRepository.findByReceivedRequest(receivedRequest); }
+    @GetMapping("/api/friends/received/{friendReceivedRequest}")
+    public Iterable<Friend> findByFriendReceivedRequest(@PathVariable int friendReceivedRequest) { return friendRepository.findByFriendReceivedRequest(friendReceivedRequest); }
 
-    /*
-    //  Finds current friends for the user. The user either
-    //  requested the friendship or received the request, hence
-    //  querying for sentrequest or received request. Current
-    //  friends are defined as having a status of 1, so I set
-    //  that here to grab only current friends, and not pending
-    //  friends. You shouldn't be able to see the posts of
-    //  pending friends, eh?
-     */
-    @GetMapping("/api/friends/current/{userId}/{status}")
-    public Iterable<Friend> findByStatusAndSentRequestOrStatusTwoAndReceivedRequest(@PathVariable(value="userId") int userId, @PathVariable(value="status") int status) {
-        int sentRequest = userId;
-        int receivedRequest = userId;
-        return friendRepository.findByStatusAndSentRequestOrStatusAndReceivedRequest (status, sentRequest, status, receivedRequest);
-    }
+    @GetMapping("/api/friends/sent/{sentRequestUsername}")
+    public Iterable<Friend> findBySentRequestUsername(@PathVariable String sentRequestUsername) { return friendRepository.findBySentRequestUsername(sentRequestUsername); }
+
+    @GetMapping("/api/friends/received/{receivedRequestUsername}")
+    public Iterable<Friend> findByReceivedRequestUsername(@PathVariable String receivedRequestUsername) { return friendRepository.findByReceivedRequestUsername(receivedRequestUsername); }
+
+
 }

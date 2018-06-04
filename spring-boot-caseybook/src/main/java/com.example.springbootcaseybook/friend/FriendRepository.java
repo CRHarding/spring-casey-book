@@ -5,8 +5,9 @@ import com.example.springbootcaseybook.friend.Friend;
 import org.springframework.data.repository.CrudRepository;
 
 public interface FriendRepository extends CrudRepository<Friend, Long> {
-    public List<Friend> findByStatus(int status);
-    public List<Friend> findBySentRequest(int sentRequest);
-    public List<Friend> findByReceivedRequest(int receivedRequest);
-    public List<Friend> findByStatusAndSentRequestOrStatusAndReceivedRequest(int status, int sentRequest, int statustwo, int receivedRequest);
+    List<Friend> findByStatus(int status);
+    List<Friend> findByFriendSentRequest(int sentRequestFriend);
+    List<Friend> findByFriendReceivedRequest(int receivedRequestFriend);
+    List<Friend> findBySentRequestUsername(String sentRequestUsername);
+    List<Friend> findByReceivedRequestUsername(String receivedRequestUsername);
 }

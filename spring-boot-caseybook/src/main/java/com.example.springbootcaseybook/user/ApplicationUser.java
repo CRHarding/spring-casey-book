@@ -1,5 +1,7 @@
 package com.example.springbootcaseybook.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import java.util.HashSet;
@@ -21,13 +23,16 @@ public class ApplicationUser {
     private Long id;
 
     @OneToMany(mappedBy = "posterId")
+    @JsonIgnoreProperties("posterId")
     private Set<Post> posts = new HashSet<> ();
 
-    @OneToMany(mappedBy = "sentRequest")
-    private Set<Friend> sentRequestFriends = new HashSet<> ();
+    @OneToMany(mappedBy = "friendSentRequest")
+    @JsonIgnoreProperties("friendSentRequest")
+    private Set<Friend> sentRequest = new HashSet<> ();
 
-    @OneToMany(mappedBy = "receivedRequest")
-    private Set<Friend> receivedRequestFriends = new HashSet<> ();
+    @OneToMany(mappedBy = "friendReceivedRequest")
+    @JsonIgnoreProperties("friendReceivedRequest")
+    private Set<Friend> receivedRequest = new HashSet<> ();
 
     @Column(name = "USERNAME")
     private String username;

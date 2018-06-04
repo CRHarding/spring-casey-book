@@ -33,8 +33,5 @@ dependencies {
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 	runtime ("org.springframework.boot:spring-boot-devtools")
 	runtime("org.postgresql:postgresql")
-	runtime("javax.xml.bind:jaxb-api:2.2.11")
-	runtime("com.sun.xml.bind:jaxb-core:2.2.11")
-	runtime("com.sun.xml.bind:jaxb-impl:2.2.11")
 	runtime("javax.activation:activation:1.1.1")
 }

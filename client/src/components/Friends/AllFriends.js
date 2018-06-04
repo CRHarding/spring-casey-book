@@ -35,12 +35,13 @@ class AllFriends extends Component {
     super(props);
     this.state = {
       pendingFriends: null,
+      currentFriends: null,
+      rejectedFriends: null,
       pendingFriendsDataLoaded: false,
+      currentFriendsDataLoaded: false,
       user: this.props.user,
       friend: this.props.friend,
       isUser: this.props.isUser,
-      currentFriends: null,
-      currentFriendDataLoaded: false,
       value: 0,
     };
 
@@ -52,34 +53,31 @@ class AllFriends extends Component {
   };
 
   componentDidMount() {
-    let id;
+    let currentFriends = [];
+    let pendingFriends = [];
+    let rejectedFriends = [];
 
-    if (this.state.isUser) {
-      id = this.state.user.id;
-    } else {
-      id = this.state.friend.id;
-    }
-
-    FriendServices.getFriendsByStatus(1, id).then(responsePendingFriends => {
-      this.setState({
-        pendingFriends: responsePendingFriends.data,
-        pendingFriendsDataLoaded: true,
-      });
+    this.state.user.receivedRequest.filter(friend => {
+      if (friend.status === 2) {
+        currentFriends.push(friend);
+      } else if (friend.status === 1) {
+        pendingFriends.push(friend);
+      } else {
+        rejectedFriends.push(friend);
+      }
     });
 
-    FriendServices.getFriendsByStatus(2, id)
-      .then(responseCurrentFriends => {
-        this.setState({
-          currentFriends: responseCurrentFriends.data,
-          currentFriendsDataLoaded: true,
-        });
-      })
-      .catch(err => {
-        console.log('error in get current friends--->', err);
-      });
+    this.setState({
+      pendingFriends: pendingFriends,
+      currentFriends: currentFriends,
+      rejectedFriends: rejectedFriends,
+      currentFriendsDataLoaded: true,
+      pendingFriendsDataLoaded: true,
+    });
   }
 
   handleFriendChoice(friend, choice) {
+    console.log(friend, choice);
     let changeFriend = friend;
     if (choice) {
       changeFriend.status = 2;
@@ -87,9 +85,12 @@ class AllFriends extends Component {
       changeFriend.status = 3;
     }
 
+    if (friend.friendSentRequest.receivedRequest.length > 0) {
+      friend.friendSentRequest.receivedRequest = [];
+    }
+
     FriendServices.editFriend(changeFriend)
       .then(responseFriend => {
-        console.log('friend updated--->', responseFriend.data);
         let pendingFriends = this.state.pendingFriends;
         let currentFriends = this.state.currentFriends;
         pendingFriends = pendingFriends.filter(removeFriend => {
@@ -118,12 +119,12 @@ class AllFriends extends Component {
         {this.state.pendingFriends.map((friend, key) => {
           if (friend) {
             return (
-                <SingleFriend
-                  friend={friend}
-                  user={this.state.user}
-                  key={key}
-                  handleFriendChoice={this.handleFriendChoice}
-                />
+              <SingleFriend
+                friend={friend}
+                user={this.state.user}
+                key={key}
+                handleFriendChoice={this.handleFriendChoice}
+              />
             );
           } else {
             return null;
@@ -139,13 +140,13 @@ class AllFriends extends Component {
         {this.state.currentFriends.map((friend, key) => {
           if (friend) {
             return (
-                <RenderCurrentFriends
-                  key={key}
-                  friend={friend}
-                  classes={classes}
-                  isUser={this.state.isUser}
-                  user={this.state.user}
-                />
+              <RenderCurrentFriends
+                key={key}
+                friend={friend}
+                classes={classes}
+                isUser={this.state.isUser}
+                user={this.state.user}
+              />
             );
           } else {
             return null;
