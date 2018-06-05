@@ -9,7 +9,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 
-import PostServices from '../../services/PostServices';
 import EditPost from './EditPost';
 
 const styles = theme => ({
@@ -42,6 +41,7 @@ class SinglePost extends Component {
     };
 
     this.showEditForm = this.showEditForm.bind(this);
+    this.manageEdit = this.manageEdit.bind(this);
   }
 
   showEditForm() {
@@ -50,14 +50,12 @@ class SinglePost extends Component {
     });
   }
 
-  handleDelete(postId) {
-    PostServices.deletePost(postId)
-      .then(deletedPost => {
-        console.log('post deleted successfully--->', deletedPost);
-      })
-      .catch(err => {
-        console.log('post delete failed--->', err);
-      });
+  manageEdit(post) {
+    console.log(post);
+    this.setState({
+      showEditForm: false,
+    });
+    this.props.manageEdit(post);
   }
 
   render() {
@@ -65,7 +63,6 @@ class SinglePost extends Component {
     const post = this.state.post;
     const user = this.state.user;
     const isUser = this.state.isUser;
-
 
     return (
       <Paper className={classes.root} elevation={4}>
@@ -85,7 +82,7 @@ class SinglePost extends Component {
             <IconButton
               className={classes.button}
               aria-label="Delete"
-              onClick={() => this.handleDelete(post.id)}
+              onClick={() => this.props.manageDelete(post.id)}
             >
               <DeleteIcon />
             </IconButton>
@@ -100,7 +97,15 @@ class SinglePost extends Component {
         ) : (
           ''
         )}
-        {this.state.showEditForm ? <EditPost post={post} user={user} /> : ''}
+        {this.state.showEditForm ? (
+          <EditPost
+            post={post}
+            user={user}
+            manageEdit={() => this.manageEdit(post)}
+          />
+        ) : (
+          ''
+        )}
       </Paper>
     );
   }

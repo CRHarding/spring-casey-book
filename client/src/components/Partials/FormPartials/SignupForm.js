@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 import UserServices from '../../../services/UserServices';
 
@@ -85,6 +86,9 @@ class LoginForm extends Component {
     const { classes } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
+        <Typography variant="headline" component="h3">
+          Sign Up
+        </Typography>
         <div>
           <TextField
             id="userName"
@@ -129,7 +133,6 @@ class LoginForm extends Component {
           <TextField
             id="textarea"
             label="About Me"
-            placeholder="Placeholder"
             multiline
             className={classes.textField}
             margin="normal"

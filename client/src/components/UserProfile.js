@@ -29,10 +29,7 @@ class UserProfile extends Component {
     this.state = {
       showPostForm: false,
       id: this.props.match.params.id,
-      user: {
-        userName: 'CRHarding',
-        id: 1,
-      },
+      user: this.props.user,
       friend: null,
       friendDataLoaded: false,
       isUser: false,
@@ -43,6 +40,7 @@ class UserProfile extends Component {
   componentDidMount() {
     UserServices.getOneUser(this.state.id)
       .then(friend => {
+        console.log(friend);
         const checkIfUser = friend.data.id === this.state.user.id;
         this.setState({
           friend: friend.data,

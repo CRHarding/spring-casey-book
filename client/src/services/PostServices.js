@@ -33,7 +33,7 @@ const PostServices = {
   editPost(post) {
     console.log(post);
     return axios({
-      method: 'PATCH',
+      method: 'PUT',
       url: `/api/posts/${post.id}`,
       data: post,
     });

@@ -16,7 +16,6 @@ class AllPosts extends Component {
   render() {
     const isUser = this.state.user.id === this.state.friend.id;
     const posts = this.state.posts;
-
     return (
       <Grid item xs>
         <UserPosts
@@ -24,8 +23,10 @@ class AllPosts extends Component {
           user={this.state.user}
           friend={this.state.friend}
           isUser={isUser}
-          manageDelete={this.manageDelete}
-        />      </Grid>
+          manageDelete={this.props.manageDelete}
+          manageEdit={this.props.manageEdit}
+        />
+      </Grid>
     );
   }
 }

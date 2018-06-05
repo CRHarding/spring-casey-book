@@ -7,8 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-import PostServices from '../../services/PostServices';
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -31,10 +29,23 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.post.title,
-      postText: this.props.post.postText,
+      title: null,
+      postText: null,
       user: this.props.user,
+      postId: null,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.post) {
+      this.setState({
+        title: this.props.post.title,
+        postText: this.props.post.text,
+        postId: this.props.post.id,
+      });
+    }
   }
 
   handleChange = name => event => {
@@ -43,23 +54,16 @@ class PostForm extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault();
     const post = {
       title: this.state.title,
       postText: this.state.postText,
       posterId: this.state.user.id,
-      posterUserName: this.state.user.userName,
+      postId: this.state.postId,
     };
-    console.log(this.props);
 
-    PostServices.addPost(post)
-      .then(addPost => {
-        console.log('Adding post worked!--->', addPost);
-      })
-      .catch(err => {
-        console.log('Error in adding post--->', err);
-      });
+    this.props.handlePostAdd(post);
   };
 
   render() {
@@ -69,9 +73,7 @@ class PostForm extends Component {
       <Grid item xs>
         <form
           className={classes.container}
-          onSubmit={() =>
-            this.handleSubmit()
-          }
+          onSubmit={this.handleSubmit}
         >
           <div className={classes.container}>
             <FormControl className={classes.formControl}>

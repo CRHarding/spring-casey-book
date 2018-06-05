@@ -7,8 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-import PostServices from '../../services/PostServices';
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -36,6 +34,8 @@ class PostForm extends Component {
       user: this.props.user,
       post: this.props.post,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = name => event => {
@@ -44,23 +44,15 @@ class PostForm extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault();
 
     let post = this.state.post;
     post.title = this.state.title;
     post.postText = this.state.postText;
-    post.posterId = this.state.user.id;
-    post.posterUserName = this.state.user.userName;
-
-    PostServices.editPost(post)
-      .then(addPost => {
-        console.log('Adding post worked!--->', addPost);
-      })
-      .catch(err => {
-        console.log('Error in adding post--->', err);
-      });
-  };
+    post.posterUsername = this.state.user.username;
+    this.props.manageEdit(post);
+  }
 
   render() {
     const { classes } = this.props;

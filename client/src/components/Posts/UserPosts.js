@@ -23,7 +23,14 @@ const UserPosts = props => {
       {userPosts.map((post, key) => {
         if (post) {
           return (
-            <SinglePost post={post} key={key} user={user} friend={friend} isUser={isUser}/>
+            <SinglePost
+              post={post}
+              key={key}
+              user={user}
+              friend={friend}
+              isUser={isUser}
+              manageDelete={props.manageDelete}
+            />
           );
         } else {
           return null;

@@ -93,6 +93,7 @@ class AllFriends extends Component {
       .then(responseFriend => {
         let pendingFriends = this.state.pendingFriends;
         let currentFriends = this.state.currentFriends;
+        let rejectedFriends = this.state.rejectedFriends;
         pendingFriends = pendingFriends.filter(removeFriend => {
           if (friend !== removeFriend) {
             return removeFriend;
@@ -101,7 +102,11 @@ class AllFriends extends Component {
           }
         });
 
-        currentFriends.push(friend);
+        if (choice === 2) {
+          currentFriends.push(friend);
+        } else {
+          rejectedFriends.push(friend);
+        }
 
         this.setState({
           pendingFriends: pendingFriends,

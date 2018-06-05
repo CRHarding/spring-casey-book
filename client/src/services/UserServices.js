@@ -15,6 +15,13 @@ const UserServices = {
     });
   },
 
+  getUserByUsername(username) {
+    return axios({
+      method: 'GET',
+      url: `/api/users/username/${username}`,
+    });
+  },
+
   addUser(user) {
     return axios({
       method: 'POST',

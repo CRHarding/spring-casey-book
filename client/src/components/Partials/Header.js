@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -20,10 +20,11 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
-};
+});
 
 function ButtonAppBar(props) {
   const { classes } = props;
+  const isLoggedIn = props.isLoggedIn;
 
   let isFriend = false;
 
@@ -32,25 +33,30 @@ function ButtonAppBar(props) {
   }
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+    <AppBar position="static" className={classes.root}>
+      <Toolbar>
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="Menu"
+        >
           <MenuIcon />
         </IconButton>
         <Typography variant="title" color="inherit" className={classes.flex}>
-          <Link to="/" style={{ textDecoration: 'none' }}>Casey Book</Link>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            Casey Book
+          </Link>
         </Typography>
         <Typography variant="title" color="inherit" className={classes.flex}>
-          {props.isLoggedIn ? (
-            isFriend ? props.friend.username : props.user.username
-          ) : 'Welcome!'}
-
+          {props.isLoggedIn
+            ? isFriend ? props.friend.username : props.user.username
+            : 'Welcome!'}
         </Typography>
-        <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+        <Button color="inherit" onClick={() => props.handleLogout()}>
+          {isLoggedIn ? 'Logout' : ''}
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 }
 
