@@ -22,10 +22,10 @@ const PostServices = {
     });
   },
 
-  addPost(post) {
+  addPost(post, userId) {
     return axios({
       method: 'POST',
-      url: '/api/posts',
+      url: `/api/${userId}/posts`,
       data: post,
     });
   },

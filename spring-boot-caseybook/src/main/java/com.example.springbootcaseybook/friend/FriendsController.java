@@ -34,6 +34,17 @@ public class FriendsController {
         return friendRepository.save(newFriend);
     }
 
+//    @PostMapping("/api/{sentUsername}/{receivedUsername}/friends")
+//    public Friend createNewFriend(@PathVariable String sentUsername, @PathVariable String receivedUsername,
+//                                  @RequestBody Friend sentFriend, @RequestBody Friend receivedFriend) {
+//        Friend sent = this.friendRepository
+//                .findBySentRequestUsername (sentUsername)
+//                .map(applicationUser -> {
+//                    Friend result = friendRepository.save(new Friend(applicationUser,
+//                            sentFriend.getUri(), sentFriend.getStatus()))
+//                })
+//    }
+
     @PutMapping("/api/friends/{friendId}")
     public Friend updateFriendById(@PathVariable Long friendId, @RequestBody Friend friendRequest) {
         Friend friendFromDb = friendRepository.findById(friendId).get();

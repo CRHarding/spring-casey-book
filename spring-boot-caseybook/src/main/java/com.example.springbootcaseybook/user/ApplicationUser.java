@@ -22,17 +22,29 @@ public class ApplicationUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "posterId")
+    @OneToMany(mappedBy = "posterId", cascade=CascadeType.ALL)
     @JsonIgnoreProperties("posterId")
     private Set<Post> posts = new HashSet<> ();
 
-    @OneToMany(mappedBy = "friendSentRequest")
+    @OneToMany(mappedBy = "friendSentRequest", cascade=CascadeType.ALL)
     @JsonIgnoreProperties("friendSentRequest")
     private Set<Friend> sentRequest = new HashSet<> ();
 
-    @OneToMany(mappedBy = "friendReceivedRequest")
+    @OneToMany(mappedBy = "friendReceivedRequest", cascade=CascadeType.ALL)
     @JsonIgnoreProperties("friendReceivedRequest")
     private Set<Friend> receivedRequest = new HashSet<> ();
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public Set<Friend> getFriendSentRequest() {
+        return sentRequest;
+    }
+
+    public Set<Friend> getFriendReceivedRequest() {
+        return receivedRequest;
+    }
 
     @Column(name = "USERNAME")
     private String username;

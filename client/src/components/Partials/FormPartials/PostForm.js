@@ -56,11 +56,12 @@ class PostForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
     const post = {
       title: this.state.title,
       postText: this.state.postText,
-      posterId: this.state.user.id,
       postId: this.state.postId,
+      posterUsername: this.state.user.username,
     };
 
     this.props.handlePostAdd(post);

@@ -116,7 +116,7 @@ class Home extends Component {
   }
 
   handlePostEdit(post) {
-    PostServices.editPost(post)
+    PostServices.editPost(post, this.state.user.id)
       .then(editPost => {
         console.log('Editing post worked!--->', editPost.data);
         let toAddEditPosts = this.state.posts.map(onePost => {
@@ -136,7 +136,7 @@ class Home extends Component {
 
   handlePostAdd(post) {
     console.log(post);
-    PostServices.addPost(post)
+    PostServices.addPost(post, this.state.user.id)
       .then(addPost => {
         console.log('Adding post worked!--->', addPost);
         let posts = this.state.posts;

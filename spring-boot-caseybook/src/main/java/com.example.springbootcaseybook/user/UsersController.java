@@ -29,6 +29,11 @@ public class UsersController {
             return applicationUserRepository.findById(userId);
         }
 
+    @GetMapping("/users/username/{username}")
+        public ApplicationUser getApplicationUserByUsername(@PathVariable String username) {
+        return applicationUserRepository.getApplicationUserByUsername(username);
+    }
+
     @DeleteMapping("/users/{userId}")
         public HttpStatus deleteUserById(@PathVariable Long userId) {
             applicationUserRepository.deleteById(userId);

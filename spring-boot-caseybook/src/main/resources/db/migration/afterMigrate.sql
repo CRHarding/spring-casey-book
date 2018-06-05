@@ -1,10 +1,10 @@
-INSERT INTO USERS (USERNAME, FIRST_NAME, LAST_NAME, EMAIL, LOCATION, ABOUT_ME)
+INSERT INTO USERS (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL, LOCATION, ABOUT_ME)
 VALUES
-    ('CRHarding', 'Casey', 'Harding', 'casey.r.harding@gmail.com', 'New York, New York', 'I love making apps named after myself!'),
-    ('RBritt', 'Ryan', 'Brit', 'r.britt@gmail.com', 'New York, New York', 'I like to program...'),
-    ('Doodeitstom', 'Tom', 'Choe', 't.choe@gmail.com', 'New York, New York', 'I used to own a donut shop. Now I hate donuts'),
-    ('SSontag', 'Susan', 'Sontag', 's.sontag@gmail.com', 'New York, New York', 'Youve never heard of me, have you?'),
-    ('SBeauvoir', 'Simone', 'De Beauvoir', 's.beauvoir@gmail.com', 'New York, New York', 'You dont even read, bro');
+    ('CRHarding', '1234', 'Casey', 'Harding', 'casey.r.harding@gmail.com', 'New York, New York', 'I love making apps named after myself!'),
+    ('RBritt', '1234', 'Ryan', 'Brit', 'r.britt@gmail.com', 'New York, New York', 'I like to program...'),
+    ('Doodeitstom', '1234', 'Tom', 'Choe', 't.choe@gmail.com', 'New York, New York', 'I used to own a donut shop. Now I hate donuts'),
+    ('SSontag', '1234', 'Susan', 'Sontag', 's.sontag@gmail.com', 'New York, New York', 'Youve never heard of me, have you?'),
+    ('SBeauvoir', '1234', 'Simone', 'De Beauvoir', 's.beauvoir@gmail.com', 'New York, New York', 'You dont even read, bro');
 
 INSERT INTO FRIENDS (STATUS, FRIEND_SENT_REQUEST, FRIEND_RECEIVED_REQUEST, SENT_REQUEST_USERNAME, RECEIVED_REQUEST_USERNAME)
 VALUES
