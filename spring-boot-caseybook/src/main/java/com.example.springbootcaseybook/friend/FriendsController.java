@@ -3,6 +3,7 @@ package com.example.springbootcaseybook.friend;
 import com.example.springbootcaseybook.user.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -34,9 +35,27 @@ public class FriendsController {
         return friendRepository.save(newFriend);
     }
 
+//    @PostMapping("/api/{userId}/posts")
+//    ResponseEntity<?> createNewPost(@PathVariable long userId, @RequestBody Post post) {
+//        return this.applicationUserRepository.findById(userId)
+//                .map(applicationUser -> {
+//                    Post result = postRepository.save(new Post(applicationUser,
+//                            post.getUri(), post.getPosterUsername (), post.getTitle (),
+//                            post.getPostText (), post.getNumberOfLikes (), post.getNumberOfComments ()));
+//                    System.out.println(result);
+//                    URI location = ServletUriComponentsBuilder
+//                            .fromCurrentRequest ().path("/{id}")
+//                            .buildAndExpand(post.getId()).toUri();
+//                    return ResponseEntity.created(location).build();
+//
+//                })
+//                .orElse(ResponseEntity.noContent().build());
+//    }
+//
+//
 //    @PostMapping("/api/{sentUsername}/{receivedUsername}/friends")
-//    public Friend createNewFriend(@PathVariable String sentUsername, @PathVariable String receivedUsername,
-//                                  @RequestBody Friend sentFriend, @RequestBody Friend receivedFriend) {
+//    ResponseEntity<?> createNewFriend(@PathVariable String sentUsername, @PathVariable String receivedUsername,
+//                                      @RequestBody Friend sentFriend, @RequestBody Friend receivedFriend) {
 //        Friend sent = this.friendRepository
 //                .findBySentRequestUsername (sentUsername)
 //                .map(applicationUser -> {
@@ -76,6 +95,4 @@ public class FriendsController {
 
     @GetMapping("/api/friends/received/{receivedRequestUsername}")
     public Iterable<Friend> findByReceivedRequestUsername(@PathVariable String receivedRequestUsername) { return friendRepository.findByReceivedRequestUsername(receivedRequestUsername); }
-
-
 }

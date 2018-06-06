@@ -67,6 +67,7 @@ class Home extends Component {
   handleLoginSubmit(username) {
     UserServices.getUserByUsername(username)
       .then(user => {
+        console.log(user.data);
         if (user.data.id) {
           this.setState({
             user: user.data,
