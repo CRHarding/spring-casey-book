@@ -4,56 +4,56 @@ const FriendServices = {
   getAllFriends() {
     return axios({
       method: 'GET',
-      url: '/api/friends',
+      url: process.env.REACT_APP_HOST + '/api/friends',
     });
   },
 
   getFriendsById(id) {
     return axios({
       method: 'GET',
-      url: `/api/friends/user/${id}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/user/${id}`,
     });
   },
 
   getOneFriend(friendId) {
     return axios({
       method: 'GET',
-      url: `/api/friends/${friendId}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/${friendId}`,
     });
   },
 
   getFriendsByStatus(status, id) {
     return axios({
       method: 'GET',
-      url: `/api/friends/current/${id}/${status}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/current/${id}/${status}`,
     });
   },
 
   getFriendsBySentRequest(id) {
     return axios({
       method: 'GET',
-      url: `/api/friends/sent/${id}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/sent/${id}`,
     });
   },
 
   getFriendsByReceivedRequest(id) {
     return axios({
       method: 'GET',
-      url: `/api/friends/received/${id}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/received/${id}`,
     });
   },
 
   getCurrentUserFriendsById(id) {
     return axios({
       method: 'GET',
-      url: `/api/friends/current/${id}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/current/${id}`,
     });
   },
 
   addFriend(friend) {
     return axios({
       method: 'POST',
-      url: '/api/friends',
+      url: process.env.REACT_APP_HOST + '/api/friends',
       data: friend,
     });
   },
@@ -62,7 +62,7 @@ const FriendServices = {
     console.log(friend);
     return axios({
       method: 'PUT',
-      url: `/api/friends/${friend.id}`,
+      url: process.env.REACT_APP_HOST + `/api/friends/${friend.id}`,
       data: friend,
     });
   },
@@ -70,7 +70,7 @@ const FriendServices = {
   deleteFriend(friend) {
     return axios({
       method: 'DELETE',
-      url: '/api/friends/delete',
+      url: process.env.REACT_APP_HOST + '/api/friends/delete',
       data: friend,
     });
   },

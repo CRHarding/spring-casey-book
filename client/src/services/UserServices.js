@@ -4,28 +4,29 @@ const UserServices = {
   getAllUsers() {
     return axios({
       method: 'GET',
-      url: '/api/users',
+      url: process.env.REACT_APP_HOST + '/api/users',
     });
   },
 
   getOneUser(userId) {
     return axios({
       method: 'GET',
-      url: `/api/users/${userId}`,
+      url: process.env.REACT_APP_HOST + `/api/users/${userId}`,
     });
   },
 
   getUserByUsername(username) {
+    console.log(process.env.REACT_APP_HOST);
     return axios({
       method: 'GET',
-      url: `/api/users/username/${username}`,
+      url: process.env.REACT_APP_HOST + `/api/users/username/${username}`,
     });
   },
 
   addUser(user) {
     return axios({
       method: 'POST',
-      url: '/api/users',
+      url: process.env.REACT_APP_HOST + '/api/users',
       data: user,
     });
   },
@@ -33,7 +34,7 @@ const UserServices = {
   editUser(user) {
     return axios({
       method: 'PUT',
-      url: 'api/users/edit',
+      url: process.env.REACT_APP_HOST + 'api/users/edit',
       data: user,
     });
   },
@@ -41,7 +42,7 @@ const UserServices = {
   deleteUser(user) {
     return axios({
       method: 'DELETE',
-      url: 'api/users/delete',
+      url: process.env.REACT_APP_HOST + 'api/users/delete',
       data: user,
     });
   },

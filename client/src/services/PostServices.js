@@ -4,28 +4,28 @@ const PostServices = {
   getAllPosts() {
     return axios({
       method: 'GET',
-      url: '/api/posts',
+      url: process.env.REACT_APP_HOST + '/api/posts',
     });
   },
 
   getOnePost(postId) {
     return axios({
       method: 'GET',
-      url: `/api/posts/${postId}`,
+      url: process.env.REACT_APP_HOST + `/api/posts/${postId}`,
     });
   },
 
   getPostsByUserId(userId) {
     return axios({
       method: 'GET',
-      url: `/api/posts/user/${userId}`,
+      url: process.env.REACT_APP_HOST + `/api/posts/user/${userId}`,
     });
   },
 
   addPost(post, userId) {
     return axios({
       method: 'POST',
-      url: `/api/${userId}/posts`,
+      url: process.env.REACT_APP_HOST + `/api/${userId}/posts`,
       data: post,
     });
   },
@@ -34,7 +34,7 @@ const PostServices = {
     console.log(post);
     return axios({
       method: 'PUT',
-      url: `/api/posts/${post.id}`,
+      url: process.env.REACT_APP_HOST + `/api/posts/${post.id}`,
       data: post,
     });
   },
@@ -42,7 +42,7 @@ const PostServices = {
   deletePost(post) {
     return axios({
       method: 'DELETE',
-      url: `/api/posts/${post}`,
+      url: process.env.REACT_APP_HOST + `/api/posts/${post}`,
     });
   },
 };

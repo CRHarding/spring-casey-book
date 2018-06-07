@@ -136,7 +136,6 @@ class Home extends Component {
   }
 
   handlePostAdd(post) {
-    console.log(post);
     PostServices.addPost(post, this.state.user.id)
       .then(addPost => {
         console.log('Adding post worked!--->', addPost);

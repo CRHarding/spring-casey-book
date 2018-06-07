@@ -14,6 +14,7 @@ import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class PostsController {
 
@@ -54,7 +55,6 @@ public class PostsController {
                             .fromCurrentRequest ().path("/{id}")
                             .buildAndExpand(post.getId()).toUri();
                     return ResponseEntity.created(location).build();
-
                 })
                 .orElse(ResponseEntity.noContent().build());
     }

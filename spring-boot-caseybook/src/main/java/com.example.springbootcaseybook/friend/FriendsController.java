@@ -1,15 +1,30 @@
 package com.example.springbootcaseybook.friend;
 
+import com.example.springbootcaseybook.post.PostRepository;
 import com.example.springbootcaseybook.user.ApplicationUser;
+import com.example.springbootcaseybook.user.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class FriendsController {
+
+//    private final PostRepository postRepository;
+//    private final ApplicationUserRepository applicationUserRepository;
+
+//    @Autowired
+//    public PostsController(ApplicationUserRepository applicationUserRepository, PostRepository postRepository) {
+//        this.applicationUserRepository = applicationUserRepository;
+//        this.postRepository = postRepository;
+//    }
+
 
     @Autowired
     private FriendRepository friendRepository;
@@ -35,33 +50,48 @@ public class FriendsController {
         return friendRepository.save(newFriend);
     }
 
-//    @PostMapping("/api/{userId}/posts")
-//    ResponseEntity<?> createNewPost(@PathVariable long userId, @RequestBody Post post) {
-//        return this.applicationUserRepository.findById(userId)
+//    @PostMapping("/api/sent/{sentUsername}/friends")
+//    ResponseEntity<?> createNewSentFriend(@PathVariable String sentUsername, @RequestBody Friend sentFriend) {
+//        return this.friendRepository
+//                .findBySentRequestUsername (sentUsername)
 //                .map(applicationUser -> {
-//                    Post result = postRepository.save(new Post(applicationUser,
-//                            post.getUri(), post.getPosterUsername (), post.getTitle (),
-//                            post.getPostText (), post.getNumberOfLikes (), post.getNumberOfComments ()));
+//                    Friend result = friendRepository.save(new Friend(applicationUser,
+//                            sentFriend.getUri(), 1));
 //                    System.out.println(result);
 //                    URI location = ServletUriComponentsBuilder
-//                            .fromCurrentRequest ().path("/{id}")
-//                            .buildAndExpand(post.getId()).toUri();
+//                            .fromCurrentRequst ().path("/{id}")
+//                            .buildAndExpand(sentFriend.getId()).toUri();
 //                    return ResponseEntity.created(location).build();
-//
 //                })
 //                .orElse(ResponseEntity.noContent().build());
 //    }
 //
+//    @PutMapping("/api/friends/{friendId}")
+//    public Friend updateFriendById(@PathVariable Long friendId, @RequestBody Friend friendRequest) {
+//        Friend friendFromDb = friendRepository.findById(friendId).get();
 //
-//    @PostMapping("/api/{sentUsername}/{receivedUsername}/friends")
-//    ResponseEntity<?> createNewFriend(@PathVariable String sentUsername, @PathVariable String receivedUsername,
-//                                      @RequestBody Friend sentFriend, @RequestBody Friend receivedFriend) {
-//        Friend sent = this.friendRepository
-//                .findBySentRequestUsername (sentUsername)
+//        friendFromDb.setStatus(friendRequest.getStatus());
+//
+//        return friendRepository.save(friendFromDb);
+//    }
+//
+//    @PutMapping("/api/friends/received/{sentFriendId}/{receivedFriendUsername}")
+//    ResponseEntity<?> updateFriendToAddReceivedRequestUser(@PathVariable Long sentFriendId,@PathVariable String receivedFriendUsername,
+//                                                           @RequestBody Friend receivedFriend) {
+//        return friendRepository.setReceivedFriend(
+//                friendRepository.findByReceivedRequestUsername(receivedFriendUsername)
 //                .map(applicationUser -> {
 //                    Friend result = friendRepository.save(new Friend(applicationUser,
-//                            sentFriend.getUri(), sentFriend.getStatus()))
+//                            receivedFriend.getUri(), 1));
+//                    System.out.println(result);
+//                    URI location = ServletUriComponentsBuilder
+//                            .fromCurrentRequest ().path("/{id}")
+//                            .buildAndExpand(receivedFriend.getId()).toUri();
+//                    return ResponseEntity.created(location).build();
 //                })
+//                .orElse(ResponseEntity.noContent().build())
+//        );
+//
 //    }
 
     @PutMapping("/api/friends/{friendId}")

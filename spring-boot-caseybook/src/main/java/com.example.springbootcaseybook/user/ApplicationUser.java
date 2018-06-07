@@ -34,18 +34,6 @@ public class ApplicationUser {
     @JsonIgnoreProperties("friendReceivedRequest")
     private Set<Friend> receivedRequest = new HashSet<> ();
 
-    public Set<Post> getPosts() {
-        return posts;
-    }
-
-    public Set<Friend> getFriendSentRequest() {
-        return sentRequest;
-    }
-
-    public Set<Friend> getFriendReceivedRequest() {
-        return receivedRequest;
-    }
-
     @Column(name = "USERNAME")
     private String username;
 
